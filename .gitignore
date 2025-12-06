@@ -20,7 +20,7 @@ wheels/
 .installed.cfg
 *.egg
 venv/
-env/
+xenv/
 .venv/
 ENV/
 

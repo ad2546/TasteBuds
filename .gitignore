@@ -96,12 +96,4 @@ logs/
 tmp/
 temp/
 /claude
-<<<<<<< HEAD
 .env*.local
-=======
-<<<<<<< HEAD
->>>>>>> 45b0209a70c7c9a7fbef6b55be03fe64d428a2e0
-.env*.local
-=======
->>>>>>> 738cf12d984e4104ac11080618a469875f5b1647
->>>>>>> 9a29911e03cd2c95938a74a2f0a5588728a020e2

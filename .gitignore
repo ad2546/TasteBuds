@@ -96,3 +96,4 @@ logs/
 tmp/
 temp/
 /claude
+.env*.local

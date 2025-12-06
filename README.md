@@ -1,36 +1,39 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# TasteSync Web App
 
-## Getting Started
+Modern food discovery web application built with Next.js 15, TypeScript, and Tailwind CSS.
 
-First, run the development server:
+## 🚀 Quick Start
 
-```bash
+\`\`\`bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+# Open http://localhost:3000
+\`\`\`
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🔗 Backend
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- API: http://localhost:8000/api/v1
+- Docs: http://localhost:8000/docs
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📝 Test Account
 
-## Learn More
+- Email: alex.chen@example.com
+- Password: password123
 
-To learn more about Next.js, take a look at the following resources:
+## 🎨 Add V0 Components
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+\`\`\`bash
+npx shadcn@latest add "YOUR_V0_LINK"
+\`\`\`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 📦 API Usage
 
-## Deploy on Vercel
+\`\`\`tsx
+import { api } from '@/lib/api';
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+const data = await api.login('alex.chen@example.com', 'password123');
+const user = await api.getCurrentUser();
+const twins = await api.getTwins();
+\`\`\`
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+**Ready to build!** 🎨

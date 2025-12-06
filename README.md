@@ -1,44 +1,3 @@
-<<<<<<< HEAD
-# TasteSync Web App
-
-Modern food discovery web application built with Next.js 15, TypeScript, and Tailwind CSS.
-
-## 🚀 Quick Start
-
-\`\`\`bash
-npm install
-npm run dev
-# Open http://localhost:3000
-\`\`\`
-
-## 🔗 Backend
-
-- API: http://localhost:8000/api/v1
-- Docs: http://localhost:8000/docs
-
-## 📝 Test Account
-
-- Email: alex.chen@example.com
-- Password: password123
-
-## 🎨 Add V0 Components
-
-\`\`\`bash
-npx shadcn@latest add "YOUR_V0_LINK"
-\`\`\`
-
-## 📦 API Usage
-
-\`\`\`tsx
-import { api } from '@/lib/api';
-
-const data = await api.login('alex.chen@example.com', 'password123');
-const user = await api.getCurrentUser();
-const twins = await api.getTwins();
-\`\`\`
-
-**Ready to build!** 🎨
-=======
 # TasteSync
 
 AI-powered restaurant discovery app built for the Yelp Hackathon. Creates personalized Taste DNA Profiles and matches users with Taste Twins—people with similar culinary preferences.
@@ -60,6 +19,13 @@ AI-powered restaurant discovery app built for the Yelp Hackathon. Creates person
 - **Caching**: Redis
 - **Vector DB**: Pinecone (for taste embeddings)
 - **AI/ML**: PyTorch, LangChain, scikit-learn
+
+### Web Frontend
+- **Framework**: Next.js 15
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **UI Components**: Radix UI
+- **State Management**: React Context
 
 ### Mobile
 - **Framework**: React Native (Expo)
@@ -87,6 +53,13 @@ TasteSync/
 │   ├── requirements.txt
 │   └── alembic/               # Database migrations
 │
+├── web/                       # Next.js Web App
+│   ├── src/
+│   │   ├── app/               # App router pages
+│   │   ├── components/        # React components
+│   │   └── lib/               # Utilities & API client
+│   └── package.json
+│
 ├── mobile/                    # React Native App
 │   ├── src/
 │   │   ├── screens/           # App screens
@@ -107,7 +80,7 @@ TasteSync/
 - Node.js 18+
 - PostgreSQL
 - Redis
-- Expo CLI
+- Expo CLI (for mobile)
 
 ### Backend Setup
 
@@ -130,6 +103,19 @@ alembic upgrade head
 
 # Start server
 uvicorn app.main:app --reload
+```
+
+### Web Frontend Setup
+
+```bash
+cd web
+
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+# Open http://localhost:3000
 ```
 
 ### Mobile Setup
@@ -200,6 +186,21 @@ JWT_SECRET_KEY=your_secret_key_min_32_chars
 - `GET /api/v1/restaurants/{id}` - Get restaurant details
 - `POST /api/v1/restaurants/{id}/save` - Save restaurant
 
+## Test Account
+
+- Email: alex.chen@example.com
+- Password: password123
+
+## API Usage (Web Frontend)
+
+```tsx
+import { api } from '@/lib/api';
+
+const data = await api.login('alex.chen@example.com', 'password123');
+const user = await api.getCurrentUser();
+const twins = await api.getTwins();
+```
+
 ## Demo Flow
 
 1. **Onboarding**: User registers and completes Taste DNA quiz
@@ -209,7 +210,10 @@ JWT_SECRET_KEY=your_secret_key_min_32_chars
 5. **Detail View**: View restaurant with Yelp data and explanation
 6. **Gamification**: Complete challenges and climb leaderboard
 
+## Deployment
+
+See [DEPLOYMENT.md](DEPLOYMENT.md) for complete deployment instructions using free hosting services (Vercel + Render).
+
 ## License
 
 MIT License - Built for Yelp Hackathon
->>>>>>> 45b0209a70c7c9a7fbef6b55be03fe64d428a2e0

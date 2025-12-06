@@ -1,32 +1,3 @@
-<<<<<<< HEAD
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
-# dependencies
-/node_modules
-/.pnp
-.pnp.*
-.yarn/*
-!.yarn/patches
-!.yarn/plugins
-!.yarn/releases
-!.yarn/versions
-
-# testing
-/coverage
-
-# next.js
-/.next/
-/out/
-
-# production
-/build
-
-# misc
-.DS_Store
-*.pem
-
-# debug
-=======
 # Python
 __pycache__/
 *.py[cod]
@@ -55,26 +26,32 @@ ENV/
 
 # Node
 node_modules/
->>>>>>> 45b0209a70c7c9a7fbef6b55be03fe64d428a2e0
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
-<<<<<<< HEAD
-# env files (can opt-in for committing if needed)
-.env*
+# Next.js
+/.next/
+/out/
 
-# vercel
-.vercel
+# Testing
+/coverage
+.coverage
+htmlcov/
+.pytest_cache/
+.tox/
+.nox/
 
-# typescript
-*.tsbuildinfo
-next-env.d.ts
-=======
 # Expo
 .expo/
-dist/
 web-build/
 *.jks
 *.p8
@@ -93,16 +70,17 @@ web-build/
 
 # Environment
 .env
+.env*
 .env.local
 .env.*.local
 *.env
 
-# Testing
-.coverage
-htmlcov/
-.pytest_cache/
-.tox/
-.nox/
+# Vercel
+.vercel
+
+# TypeScript
+*.tsbuildinfo
+next-env.d.ts
 
 # Database
 *.db
@@ -114,9 +92,7 @@ logs/
 
 # Misc
 *.bak
+*.pem
 tmp/
 temp/
-
-.env
 /claude
->>>>>>> 45b0209a70c7c9a7fbef6b55be03fe64d428a2e0

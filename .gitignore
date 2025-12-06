@@ -120,3 +120,4 @@ temp/
 .env
 /claude
 >>>>>>> 45b0209a70c7c9a7fbef6b55be03fe64d428a2e0
+.env*.local

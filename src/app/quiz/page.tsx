@@ -63,7 +63,7 @@ export default function QuizPage() {
     if (!answer) return false
     if (currentQuestion.type === "multiple_choice" || currentQuestion.type === "multiselect") {
       const arr = answer as string[]
-      return arr.length >= 3 && arr.length <= 5
+      return arr.length >= 1
     }
     if (currentQuestion.type === "swipe") {
       return typeof answer === "string" && (answer === "left" || answer === "right")
@@ -203,7 +203,7 @@ export default function QuizPage() {
 
           {(currentQuestion?.type === "multiple_choice" || currentQuestion?.type === "multiselect") && (
             <div className="space-y-3">
-              <p className="text-sm text-[#6C757D] mb-4">Select 3-5 options</p>
+              <p className="text-sm text-[#6C757D] mb-4">Select one or more options</p>
               <div className="grid grid-cols-2 gap-3">
                 {currentQuestion.options?.map((opt) => {
                   const option = typeof opt === "string" ? opt : opt.value

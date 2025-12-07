@@ -58,6 +58,13 @@ class YelpAIService:
         if raw_data.get("entities") and len(raw_data["entities"]) > 0:
             businesses = raw_data["entities"][0].get("businesses", [])
 
+            # Transform each business to add image_url from contextual_info.photos
+            for business in businesses:
+                if "contextual_info" in business and "photos" in business["contextual_info"]:
+                    photos = business["contextual_info"]["photos"]
+                    if photos and len(photos) > 0:
+                        business["image_url"] = photos[0].get("original_url")
+
         transformed["businesses"] = businesses
 
         return transformed

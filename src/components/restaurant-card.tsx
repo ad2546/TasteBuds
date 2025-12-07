@@ -16,6 +16,12 @@ export function RestaurantCard({ restaurant, onClick }: RestaurantCardProps) {
   const [saving, setSaving] = useState(false)
   const [visited, setVisited] = useState(false)
   const [marking, setMarking] = useState(false)
+  const [imageError, setImageError] = useState(false)
+
+  // Debug: log restaurant data to check image_url
+  if (!restaurant.image_url) {
+    console.log("Restaurant missing image_url:", restaurant.name, restaurant)
+  }
 
   const handleSave = async (e: React.MouseEvent) => {
     e.stopPropagation()
@@ -59,12 +65,22 @@ export function RestaurantCard({ restaurant, onClick }: RestaurantCardProps) {
       className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow cursor-pointer group"
     >
       {/* Image */}
-      <div className="relative h-48 overflow-hidden">
-        <img
-          src={restaurant.image_url || "/placeholder.svg?height=192&width=400&query=restaurant food"}
-          alt={restaurant.name}
-          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-        />
+      <div className="relative h-48 overflow-hidden bg-gray-200">
+        {restaurant.image_url && !imageError ? (
+          <img
+            src={restaurant.image_url}
+            alt={restaurant.name}
+            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+            onError={() => setImageError(true)}
+          />
+        ) : (
+          <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-100 to-gray-200">
+            <div className="text-center">
+              <MapPin className="w-12 h-12 text-gray-400 mx-auto mb-2" />
+              <p className="text-gray-500 text-sm font-medium">{restaurant.name}</p>
+            </div>
+          </div>
+        )}
 
         {/* Match Score Badge */}
         {matchPercent > 0 && (

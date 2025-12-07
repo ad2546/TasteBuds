@@ -15,6 +15,7 @@ class Settings(BaseSettings):
     debug: bool = True
 
     # Database
+    database_url_env: str | None = None  # Render provides DATABASE_URL
     postgres_host: str = "localhost"
     postgres_port: int = 5432
     postgres_db: str = "tastesync"
@@ -54,6 +55,13 @@ class Settings(BaseSettings):
     @property
     def database_url(self) -> str:
         """Construct database URL (SQLite for dev, PostgreSQL for prod)."""
+        # If DATABASE_URL is provided (e.g., from Render), use it
+        if self.database_url_env:
+            # Convert postgres:// to postgresql+asyncpg://
+            url = self.database_url_env.replace("postgres://", "postgresql+asyncpg://")
+            url = url.replace("postgresql://", "postgresql+asyncpg://")
+            return url
+
         if self.use_sqlite:
             return "sqlite+aiosqlite:///./tastesync.db"
         return f"postgresql+asyncpg://{self.postgres_user}:{self.postgres_password}@{self.postgres_host}:{self.postgres_port}/{self.postgres_db}"
@@ -61,6 +69,12 @@ class Settings(BaseSettings):
     @property
     def sync_database_url(self) -> str:
         """Construct sync database URL for Alembic."""
+        # If DATABASE_URL is provided, use it
+        if self.database_url_env:
+            # Ensure it uses postgresql:// (not asyncpg)
+            url = self.database_url_env.replace("postgresql+asyncpg://", "postgresql://")
+            return url
+
         if self.use_sqlite:
             return "sqlite:///./tastesync.db"
         return f"postgresql://{self.postgres_user}:{self.postgres_password}@{self.postgres_host}:{self.postgres_port}/{self.postgres_db}"
@@ -68,6 +82,11 @@ class Settings(BaseSettings):
     class Config:
         env_file = ".env"
         env_file_encoding = "utf-8"
+
+        # Map DATABASE_URL to database_url_env
+        fields = {
+            'database_url_env': {'env': 'DATABASE_URL'}
+        }
 
 
 def get_settings() -> Settings:

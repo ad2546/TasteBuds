@@ -1,6 +1,5 @@
 """Authentication service."""
 
-import random
 from typing import Optional
 from uuid import UUID
 
@@ -11,27 +10,6 @@ from app.models.user import User
 from app.schemas.user import UserCreate, UserResponse, UserWithToken
 from app.core.security import get_password_hash, verify_password, create_access_token
 from app.core.exceptions import InvalidCredentialsException, UserAlreadyExistsException
-
-# Food-themed emojis for profile pictures
-AVATAR_EMOJIS = [
-    "🍕", "🍔", "🍟", "🌭", "🍿", "🧂", "🥓", "🥚", "🍳", "🧇",
-    "🥞", "🧈", "🍞", "🥐", "🥨", "🥯", "🥖", "🧀", "🥗", "🥙",
-    "🥪", "🌮", "🌯", "🥫", "🍝", "🍜", "🍲", "🍛", "🍣", "🍱",
-    "🥟", "🍤", "🍙", "🍚", "🍘", "🍥", "🥠", "🥮", "🍢", "🍡",
-    "🍧", "🍨", "🍦", "🥧", "🧁", "🍰", "🎂", "🍮", "🍭", "🍬",
-    "🍫", "🍿", "🍩", "🍪", "🌰", "🥜", "🍯", "🥛", "🍼", "☕",
-    "🍵", "🧃", "🥤", "🧋", "🍶", "🍺", "🍻", "🥂", "🍷", "🥃",
-    "🍸", "🍹", "🧉", "🍾", "🍴", "🥄", "🔪", "🏺", "🥝", "🥥",
-    "🥑", "🍆", "🥔", "🥕", "🌽", "🌶️", "🥒", "🥬", "🥦", "🧄",
-    "🧅", "🍄", "🥨", "🥖", "🌭", "🥩", "🍗", "🍖"
-]
-
-
-def get_random_avatar() -> str:
-    """Generate a random emoji avatar URL."""
-    emoji = random.choice(AVATAR_EMOJIS)
-    # Using a data URL to embed the emoji directly
-    return f"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100'><text x='50%' y='50%' font-size='60' text-anchor='middle' dominant-baseline='central'>{emoji}</text></svg>"
 
 
 class AuthService:
@@ -51,12 +29,11 @@ class AuthService:
         if existing:
             raise UserAlreadyExistsException(user_data.email)
 
-        # Create user with random emoji avatar
+        # Create user
         user = User(
             email=user_data.email,
             name=user_data.name,
             password_hash=get_password_hash(user_data.password),
-            avatar_url=get_random_avatar(),
         )
         db.add(user)
         await db.commit()

@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation"
 import { useAuth } from "@/lib/auth-context"
+import { getAvatarUrl } from "@/lib/avatar-utils"
 import { User, Settings, LogOut, ChevronRight, Heart, Trophy, Sparkles, Bell, HelpCircle, Shield } from "lucide-react"
 import { ProtectedRoute } from "@/components/protected-route"
 
@@ -31,9 +32,9 @@ function ProfilePageContent() {
         <div className="max-w-md mx-auto text-center">
           <div className="relative inline-block">
             <img
-              src={user?.avatar_url || "/placeholder.svg?height=96&width=96&query=avatar person"}
+              src={getAvatarUrl(user?.avatar_url, user?.id)}
               alt={user?.name}
-              className="w-24 h-24 rounded-full ring-4 ring-white object-cover"
+              className="w-24 h-24 rounded-full ring-4 ring-white object-cover bg-white"
             />
             <button className="absolute bottom-0 right-0 w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-md">
               <User className="w-4 h-4 text-[#6C757D]" />

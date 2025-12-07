@@ -1,6 +1,7 @@
 "use client"
 
 import type { TasteTwin } from "@/lib/api"
+import { getAvatarUrl } from "@/lib/avatar-utils"
 
 interface TwinAvatarProps {
   twin: TasteTwin
@@ -24,9 +25,9 @@ export function TwinAvatar({ twin, size = "md", onClick }: TwinAvatarProps) {
   return (
     <div className="relative inline-block cursor-pointer" onClick={onClick}>
       <img
-        src={twin.avatar_url || "/placeholder.svg?height=64&width=64&query=avatar person"}
+        src={getAvatarUrl(twin.avatar_url, twin.user_id)}
         alt={twin.name}
-        className={`${sizeClasses[size]} rounded-full ring-2 ring-white object-cover`}
+        className={`${sizeClasses[size]} rounded-full ring-2 ring-white object-cover bg-white`}
       />
       <div className={`absolute -bottom-1 -right-1 bg-[#4ECDC4] text-white font-bold rounded-full ${badgeSize[size]}`}>
         {Math.round(twin.similarity_score * 100)}%

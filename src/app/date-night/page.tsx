@@ -74,7 +74,7 @@ function DateNightPageContent() {
   }
 
   return (
-    <div className="min-h-screen bg-[#F8F9FA]">
+    <div className="min-h-screen bg-[#F8F9FA] pb-24">
       {/* Header */}
       <div className="bg-[#FF6B6B] px-4 pt-4 pb-8">
         <div className="max-w-md mx-auto">
@@ -93,7 +93,7 @@ function DateNightPageContent() {
         </div>
       </div>
 
-      <div className="max-w-md mx-auto px-4 -mt-4 pb-8">
+      <div className="max-w-md mx-auto px-4 -mt-4 pb-24">
         {!selectedTwin ? (
           <>
             {/* Select Partner */}
@@ -216,7 +216,11 @@ function DateNightPageContent() {
                         <RestaurantCard
                           key={restaurant.id || restaurant.restaurant_id}
                           restaurant={restaurant}
-                          onClick={() => router.push(`/restaurant/${restaurant.id || restaurant.restaurant_id}`)}
+                          onClick={() => {
+                            if (restaurant.url) {
+                              window.open(restaurant.url, '_blank')
+                            }
+                          }}
                         />
                       ))}
                     </div>
@@ -231,7 +235,11 @@ function DateNightPageContent() {
                         <RestaurantCard
                           key={restaurant.id || restaurant.restaurant_id}
                           restaurant={restaurant}
-                          onClick={() => router.push(`/restaurant/${restaurant.id || restaurant.restaurant_id}`)}
+                          onClick={() => {
+                            if (restaurant.url) {
+                              window.open(restaurant.url, '_blank')
+                            }
+                          }}
                         />
                       ))}
                     </div>
@@ -246,7 +254,11 @@ function DateNightPageContent() {
                         <RestaurantCard
                           key={restaurant.id || restaurant.restaurant_id}
                           restaurant={restaurant}
-                          onClick={() => router.push(`/restaurant/${restaurant.id || restaurant.restaurant_id}`)}
+                          onClick={() => {
+                            if (restaurant.url) {
+                              window.open(restaurant.url, '_blank')
+                            }
+                          }}
                         />
                       ))}
                     </div>

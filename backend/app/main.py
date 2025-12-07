@@ -32,12 +32,17 @@ app = FastAPI(
 )
 
 # CORS middleware
+# Use wildcard in development, specific origins in production
+cors_origins = settings.cors_origins if settings.cors_origins else ["*"]
+allow_credentials = len(settings.cors_origins) > 0  # Only allow credentials with specific origins
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Allow all origins for development
-    allow_credentials=False,  # Cannot use credentials with wildcard origin
+    allow_origins=cors_origins,
+    allow_credentials=allow_credentials,
     allow_methods=["*"],
     allow_headers=["*"],
+    expose_headers=["*"],
 )
 
 # Include API router

@@ -1,0 +1,29 @@
+# Core - Production optimized
+fastapi>=0.104.0
+uvicorn[standard]>=0.24.0
+python-dotenv>=1.0.0
+pydantic>=2.5.0
+pydantic-settings>=2.1.0
+
+# Database
+sqlalchemy>=2.0.23
+asyncpg>=0.29.0
+alembic>=1.12.1
+redis>=5.0.1
+pinecone>=5.0.0
+
+# AI/ML - Lighter versions for production
+langchain>=0.0.340
+openai>=1.3.5
+scikit-learn>=1.3.2
+numpy>=1.26.0
+Pillow>=10.1.0
+# torch>=2.0.0  # Commented out - too large for Render free tier
+
+# Yelp API
+requests>=2.31.0
+httpx>=0.25.2
+
+# Auth
+python-jose[cryptography]>=3.3.0
+passlib[bcrypt]>=1.7.4

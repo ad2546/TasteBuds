@@ -1,7 +1,5 @@
 // Use environment variable or default to localhost
-const API_BASE_URL = typeof window !== 'undefined' && window.location.hostname !== 'localhost'
-  ? `http://192.168.1.81:8000/api/v1`  // Mobile access
-  : "http://localhost:8000/api/v1"     // Desktop access
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000/api/v1"
 
 class API {
   private getHeaders(): HeadersInit {

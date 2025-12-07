@@ -285,6 +285,11 @@ async def get_achievements(
         "adventurer": {"title": "Food Adventurer", "description": "Tried 10 different restaurants", "icon": "🗺️"},
         "social_butterfly": {"title": "Social Butterfly", "description": "Shared your TasteDNA card", "icon": "🦋"},
         "spice_master": {"title": "Spice Master", "description": "Visited 5 spicy restaurants", "icon": "🌶️"},
+        "first_visit": {"title": "First Step", "description": "Marked your first restaurant as visited", "icon": "🎯"},
+        "explorer_5": {"title": "Explorer", "description": "Visited 5 restaurants", "icon": "🗺️"},
+        "explorer_10": {"title": "Food Tourist", "description": "Visited 10 restaurants", "icon": "✈️"},
+        "explorer_25": {"title": "Gastronome", "description": "Visited 25 restaurants", "icon": "👨‍🍳"},
+        "explorer_50": {"title": "Culinary Legend", "description": "Visited 50 restaurants", "icon": "🏆"},
     }
 
     return {

@@ -1,6 +1,6 @@
-# TasteSync
+# TasteBuds
 
-AI-powered restaurant discovery app built for the Yelp Hackathon. Creates personalized Taste DNA Profiles and matches users with Taste Twins—people with similar culinary preferences.
+Find your food friends! AI-powered restaurant discovery app that creates personalized Taste DNA Profiles and matches you with Taste Twins—people with similar culinary preferences.
 
 ## Features
 
@@ -8,7 +8,6 @@ AI-powered restaurant discovery app built for the Yelp Hackathon. Creates person
 - **Taste Twin Matching**: Find users with similar taste preferences using vector similarity
 - **Feeling Lucky**: One-tap AI-powered restaurant recommendations with explanations
 - **Date Night Mode**: Find compatible restaurants for two people
-- **Reverse Image Search**: Upload food photos to find similar restaurants
 - **Gamification**: Challenges, leaderboards, and shareable taste cards
 
 ## Tech Stack

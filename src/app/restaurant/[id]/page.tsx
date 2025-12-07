@@ -22,14 +22,20 @@ export default function RestaurantPage() {
 
   const loadData = async () => {
     try {
+      console.log("Loading restaurant with ID:", restaurantId)
       const [restaurantData, reviewsData] = await Promise.all([
         api.getRestaurant(restaurantId),
         api.getRestaurantReviews(restaurantId),
       ])
+      console.log("Restaurant data loaded:", restaurantData)
       setRestaurant(restaurantData)
       setReviews(reviewsData.reviews)
     } catch (error) {
-      console.error("Failed to load restaurant:", error)
+      console.error("Failed to load restaurant with ID:", restaurantId, error)
+      // Show user-friendly error message
+      if (error instanceof Error && error.message.includes("404")) {
+        console.warn("Restaurant not found in Yelp database - may have been removed or ID is invalid")
+      }
     } finally {
       setLoading(false)
     }
@@ -56,10 +62,13 @@ export default function RestaurantPage() {
   if (!restaurant) {
     return (
       <div className="min-h-screen bg-[#F8F9FA] flex flex-col items-center justify-center p-4">
-        <p className="text-[#6C757D] mb-4">Restaurant not found</p>
-        <button onClick={() => router.back()} className="px-6 py-3 bg-[#FF6B6B] text-white rounded-xl font-medium">
-          Go Back
-        </button>
+        <div className="text-center max-w-md">
+          <p className="text-xl font-semibold text-[#2C3E50] mb-2">Restaurant Not Available</p>
+          <p className="text-[#6C757D] mb-6">This restaurant may no longer be listed on Yelp or the link may be outdated.</p>
+          <button onClick={() => router.back()} className="px-6 py-3 bg-[#FF6B6B] text-white rounded-xl font-medium hover:bg-[#FF5252] transition-colors">
+            Go Back
+          </button>
+        </div>
       </div>
     )
   }

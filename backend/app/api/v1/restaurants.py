@@ -141,23 +141,32 @@ async def get_saved_restaurants(
     current_user: User = Depends(get_current_user),
     db: AsyncSession = Depends(get_db),
 ):
-    """Get user's saved restaurants."""
+    """Get user's saved restaurants - always fetch fresh data from Yelp."""
     result = await db.execute(
         select(SavedRestaurant)
         .where(SavedRestaurant.user_id == current_user.id)
         .order_by(SavedRestaurant.created_at.desc())
     )
     saved = result.scalars().all()
-    return [
-        {
-            "restaurant_id": s.restaurant_id,
-            "restaurant_name": s.restaurant_name,
-            "restaurant_data": s.restaurant_data,
-            "notes": s.notes,
-            "saved_at": s.created_at,
-        }
-        for s in saved
-    ]
+
+    # Always fetch fresh restaurant data from Yelp instead of using stored snapshots
+    saved_list = []
+    for s in saved:
+        try:
+            # Fetch current data from Yelp API
+            fresh_data = await yelp_service.get_business(s.restaurant_id)
+            saved_list.append({
+                "restaurant_id": s.restaurant_id,
+                "restaurant_name": fresh_data.get("name", s.restaurant_name),
+                "restaurant_data": fresh_data,  # Always use fresh Yelp data
+                "notes": s.notes,
+                "saved_at": s.created_at,
+            })
+        except Exception:
+            # If restaurant no longer exists on Yelp, skip it
+            continue
+
+    return saved_list
 
 
 @router.post("/{restaurant_id}/log")
@@ -184,5 +193,47 @@ async def log_interaction(
         await taste_dna_service.update_taste_dna_from_interaction(
             db, current_user.id, request.action_type, restaurant
         )
+
+    # Check for visit-based achievements
+    if request.action_type == "visited":
+        from app.models.challenge import UserAchievement
+        from datetime import datetime
+
+        # Count total visits
+        result = await db.execute(
+            select(InteractionLog)
+            .where(InteractionLog.user_id == current_user.id)
+            .where(InteractionLog.action_type == "visited")
+        )
+        visit_count = len(result.scalars().all())
+
+        # Define achievement thresholds
+        achievements_to_check = {
+            1: "first_visit",
+            5: "explorer_5",
+            10: "explorer_10",
+            25: "explorer_25",
+            50: "explorer_50",
+        }
+
+        # Award achievement if milestone reached
+        if visit_count in achievements_to_check:
+            achievement_type = achievements_to_check[visit_count]
+
+            # Check if already earned
+            existing = await db.execute(
+                select(UserAchievement)
+                .where(UserAchievement.user_id == current_user.id)
+                .where(UserAchievement.achievement_type == achievement_type)
+            )
+
+            if not existing.scalar_one_or_none():
+                achievement = UserAchievement(
+                    user_id=current_user.id,
+                    achievement_type=achievement_type,
+                    earned_at=datetime.utcnow()
+                )
+                db.add(achievement)
+                await db.commit()
 
     return {"message": "Interaction logged"}

@@ -2,12 +2,13 @@ import type React from "react"
 import type { Metadata, Viewport } from "next"
 import { AuthProvider } from "@/lib/auth-context"
 import { BottomNav } from "@/components/ui"
+import { DesktopWrapper } from "@/components/desktop-wrapper"
 import "./globals.css"
 
 export const metadata: Metadata = {
-  title: "TasteSync - Discover Your Perfect Restaurant",
+  title: "TasteBuds Yelp Companion - Find People Who Like Similar Food",
   description:
-    "Find restaurants that match your unique taste DNA. Discover your taste twins and get personalized recommendations.",
+    "Connect with people who share your food preferences. TasteBuds helps you find Taste Twins with similar tastes, discover restaurants together, and explore Yelp reviews from people like you.",
 }
 
 export const viewport: Viewport = {
@@ -25,8 +26,10 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className="font-sans antialiased">
         <AuthProvider>
-          {children}
-          <BottomNav />
+          <DesktopWrapper>
+            {children}
+            <BottomNav />
+          </DesktopWrapper>
         </AuthProvider>
       </body>
     </html>

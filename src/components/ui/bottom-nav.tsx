@@ -4,6 +4,7 @@ import React from 'react'
 import { usePathname, useRouter } from 'next/navigation'
 import { Home, Search, Users, Heart, User, LucideIcon } from 'lucide-react'
 import { colors } from '@/lib/design-tokens'
+import { useDesktop } from '@/lib/desktop-context'
 
 interface NavItem {
   label: string
@@ -48,6 +49,7 @@ const navItems: NavItem[] = [
 export const BottomNav: React.FC = () => {
   const pathname = usePathname()
   const router = useRouter()
+  const { isDesktop } = useDesktop()
 
   // Don't show bottom nav on auth pages
   if (pathname === '/login' || pathname === '/register' || pathname === '/') {
@@ -56,7 +58,9 @@ export const BottomNav: React.FC = () => {
 
   return (
     <nav
-      className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 shadow-lg z-50"
+      className={`${
+        isDesktop ? 'absolute' : 'fixed'
+      } bottom-0 left-0 right-0 bg-white border-t border-gray-200 shadow-lg z-50`}
       role="navigation"
       aria-label="Main navigation"
     >

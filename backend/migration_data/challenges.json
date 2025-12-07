@@ -1,0 +1,50 @@
+[
+  {
+    "id": "3387eaef-c128-49e4-b173-de1c0b5e486e",
+    "title": "Twin Explorer",
+    "description": "Try 5 restaurants loved by your Taste Twins",
+    "challenge_type": "twin_picks",
+    "target_count": 5,
+    "points_reward": 100,
+    "start_date": null,
+    "end_date": null,
+    "active": 1,
+    "created_at": "2025-11-26 04:25:25.798632"
+  },
+  {
+    "id": "7af39708-a0b3-4dc1-8e2e-1c8b695f1fe9",
+    "title": "Cuisine Adventurer",
+    "description": "Try 3 different cuisine types this week",
+    "challenge_type": "cuisine_explore",
+    "target_count": 3,
+    "points_reward": 75,
+    "start_date": null,
+    "end_date": null,
+    "active": 1,
+    "created_at": "2025-11-26 04:25:25.798642"
+  },
+  {
+    "id": "f495e823-1816-4b8d-851a-0d30d90e3ac4",
+    "title": "Spice Pioneer",
+    "description": "Visit 3 restaurants known for spicy food",
+    "challenge_type": "spice_challenge",
+    "target_count": 3,
+    "points_reward": 50,
+    "start_date": null,
+    "end_date": null,
+    "active": 1,
+    "created_at": "2025-11-26 04:25:25.798647"
+  },
+  {
+    "id": "1d864c12-f93d-46f6-b10e-8e619abef49e",
+    "title": "Social Foodie",
+    "description": "Share your TasteDNA card 3 times",
+    "challenge_type": "social_share",
+    "target_count": 3,
+    "points_reward": 30,
+    "start_date": null,
+    "end_date": null,
+    "active": 1,
+    "created_at": "2025-11-26 04:25:25.798651"
+  }
+]

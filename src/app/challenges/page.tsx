@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
 import { useAuth } from "@/lib/auth-context"
+import { getAvatarUrl } from "@/lib/avatar-utils"
 import { api, type Challenge, type LeaderboardEntry } from "@/lib/api"
 import { Trophy, Target, Flame, Crown, Loader2 } from "lucide-react"
 
@@ -159,9 +160,9 @@ export default function ChallengesPage() {
                     {entry.rank <= 3 ? <Crown className="w-4 h-4" /> : entry.rank}
                   </div>
                   <img
-                    src={entry.avatar_url || "/placeholder.svg?height=40&width=40&query=avatar"}
+                    src={getAvatarUrl(entry.avatar_url, entry.user_id)}
                     alt={entry.name}
-                    className="w-10 h-10 rounded-full object-cover"
+                    className="w-10 h-10 rounded-full object-cover bg-white"
                   />
                   <div className="flex-1">
                     <p className="font-medium text-[#2C3E50]">{entry.name}</p>

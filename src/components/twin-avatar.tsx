@@ -25,7 +25,7 @@ export function TwinAvatar({ twin, size = "md", onClick }: TwinAvatarProps) {
   return (
     <div className="relative inline-block cursor-pointer" onClick={onClick}>
       <img
-        src={getAvatarUrl(twin.avatar_url, twin.user_id)}
+        src={getAvatarUrl(twin.avatar_url, twin.twin_id)}
         alt={twin.name}
         className={`${sizeClasses[size]} rounded-full ring-2 ring-white object-cover bg-white`}
       />

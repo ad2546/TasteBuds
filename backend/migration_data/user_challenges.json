@@ -1,0 +1,74 @@
+[
+  {
+    "id": "493c87db-11ac-45d0-9f30-daef52c31faf",
+    "user_id": "c6607a51-c828-48df-b00b-3442682a2a87",
+    "challenge_id": "3387eaef-c128-49e4-b173-de1c0b5e486e",
+    "progress": 0,
+    "completed": 0,
+    "completed_at": null,
+    "created_at": "2025-11-26 04:25:25.805417"
+  },
+  {
+    "id": "5099b3ea-fdda-42d0-8f42-5366e3beaa94",
+    "user_id": "c6607a51-c828-48df-b00b-3442682a2a87",
+    "challenge_id": "7af39708-a0b3-4dc1-8e2e-1c8b695f1fe9",
+    "progress": 0,
+    "completed": 0,
+    "completed_at": null,
+    "created_at": "2025-11-26 04:25:25.809764"
+  },
+  {
+    "id": "f986a2f2-f334-4e4a-a076-35536e05c9fb",
+    "user_id": "c6607a51-c828-48df-b00b-3442682a2a87",
+    "challenge_id": "f495e823-1816-4b8d-851a-0d30d90e3ac4",
+    "progress": 0,
+    "completed": 0,
+    "completed_at": null,
+    "created_at": "2025-11-26 04:25:25.811617"
+  },
+  {
+    "id": "19b50b33-3f58-4503-b9b3-92c4619295d4",
+    "user_id": "c6607a51-c828-48df-b00b-3442682a2a87",
+    "challenge_id": "1d864c12-f93d-46f6-b10e-8e619abef49e",
+    "progress": 0,
+    "completed": 0,
+    "completed_at": null,
+    "created_at": "2025-11-26 04:25:25.813269"
+  },
+  {
+    "id": "f370942a-b1a6-414b-82fb-d7ba94a1dcf0",
+    "user_id": "d0708080-da5a-47b8-80af-f1e4bb1f69a3",
+    "challenge_id": "3387eaef-c128-49e4-b173-de1c0b5e486e",
+    "progress": 0,
+    "completed": 0,
+    "completed_at": null,
+    "created_at": "2025-11-27 07:07:00.883216"
+  },
+  {
+    "id": "cd0225d2-7ffa-4fb9-84d5-f62b866f6d06",
+    "user_id": "d0708080-da5a-47b8-80af-f1e4bb1f69a3",
+    "challenge_id": "7af39708-a0b3-4dc1-8e2e-1c8b695f1fe9",
+    "progress": 0,
+    "completed": 0,
+    "completed_at": null,
+    "created_at": "2025-11-27 07:07:00.886526"
+  },
+  {
+    "id": "ec800d49-9917-40b3-b0df-5dcb6c993be6",
+    "user_id": "d0708080-da5a-47b8-80af-f1e4bb1f69a3",
+    "challenge_id": "f495e823-1816-4b8d-851a-0d30d90e3ac4",
+    "progress": 0,
+    "completed": 0,
+    "completed_at": null,
+    "created_at": "2025-11-27 07:07:00.887258"
+  },
+  {
+    "id": "080b8161-e04b-4b6a-b3e5-e8f9f7aa19fa",
+    "user_id": "d0708080-da5a-47b8-80af-f1e4bb1f69a3",
+    "challenge_id": "1d864c12-f93d-46f6-b10e-8e619abef49e",
+    "progress": 0,
+    "completed": 0,
+    "completed_at": null,
+    "created_at": "2025-11-27 07:07:00.888127"
+  }
+]

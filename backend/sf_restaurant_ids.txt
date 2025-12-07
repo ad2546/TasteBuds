@@ -1,0 +1,104 @@
+# San Francisco Restaurant IDs from Yelp
+# Total: 100 restaurants
+# Format: YELP_ID | Name | Rating | Price | Category
+
+uWyXImD7_A9Y28swUVbu2g | The French Club | 5.0 | N/A | Social Clubs
+D2IBO3y_2ajiBWe_RhYpag | Rice Flour | 5.0 | N/A | Desserts
+N6QixuAmL33INnOUMoetZg | Cafe Buenos Aires | 5.0 | N/A | Cafes
+70yVsFG8inde5ExDTOSk4A | MJ's Catering | 5.0 | N/A | Caterers
+gTMpqkLiN-1_ykGkboU08w | Corona Heights Market and Deli | 5.0 | N/A | Grocery
+OGx9LtlD5PaDzrccfEuG-w | Tapestry | 5.0 | N/A | Cocktail Bars
+o05rj3eNMryf19yo9xSTvA | Together Wine Lounge Dogpatch | 5.0 | N/A | Wine Bars
+3J7bk-C6p9BGURvTnu50WA | Burke & Black | 5.0 | N/A | Caterers
+8QMWJKR6atLxlcCtDUtIGQ | Dork Eat's | 5.0 | N/A | Soul Food
+ws6uVI1jGP3Utz4BxlO0Jw | Elena's Bread | 5.0 | N/A | Mediterranean
+w6igEjgmagwHKGnV4oMciA | Latitude 15 Pop-Up | 5.0 | $$ | Pop-Up Restaurants
+VSS784hbKbY42qW-2fz2vQ | Al Pastor Organic Kitchen | 5.0 | N/A | Mexican
+wNsOhBi7PQ0Wb53rwkxjWQ | Mad 4 Madeleines | 5.0 | $ | Desserts
+MgPu3gcQ7h4lG58QkaYL6A | Dumpling Dinner Party | 5.0 | N/A | Cooking Classes
+nuOUfxS3zEvgksu7xLamcQ | Gaufre it! | 5.0 | $$ | Desserts
+Z0ikmAdo7H-WiCGQ4rOm0w | Next Level Clucker | 5.0 | N/A | Vegan
+B9lbjQ9KKX1qaltmwVhNxg | M Pot | 5.0 | N/A | Hot Pot
+sKKALPKQmi88fwQo99mEzQ | Café La Joie | 5.0 | N/A | Cafes
+hXFPIYq6CyGe-U87NZxmFw | Tacos King Maya | 5.0 | N/A | Tacos
+occc1ID2IOGmIeadZcgHmg | SF Grill | 5.0 | N/A | Mediterranean
+MEurWpEwzisUQNKHBCv_Qg | Sassy Foods | 5.0 | N/A | Dim Sum
+WX91pw0J65I6KdN60395bA | iBowl | 5.0 | N/A | Japanese Curry
+GPG6A21N5pKyWhSQT22y0w | Ping's Raw Foods | 5.0 | N/A | Desserts
+gl7cNr5rkqoMUKAJvQaDjA | Bento Taro | 5.0 | N/A | Chinese
+9DI1pcbw2X5BG8yfqHYDBg | Off the Grid Treasure Island | 5.0 | N/A | Food Stands
+gE4SuTJ-346qkj-sQ4afrw | Dingles Public House | 5.0 | N/A | Gastropubs
+L3uofdExs33e1UtiQ_leeg | Sunset29 BBQ | 5.0 | N/A | Barbeque
+RllMD9G4edTp-UDfivYoWw | La Travesia | 5.0 | N/A | Breakfast & Brunch
+5TV9LOBMzEEhjnCrr8MBww | The Check-In Lounge | 5.0 | N/A | Wine Bars
+XFoaFIROdJpS31ZIQ1g9lg | Tea Rex Cafe & Specialty Teas | 5.0 | N/A | Sandwiches
+Ob_Awvl1almZG5iZ-oj4Fg | Rome's kitchen | 5.0 | N/A | Food Trucks
+wSgGYW0iiYnnZItAKAy0WA | Willow On the Green | 5.0 | N/A | Cheese Shops
+tFHkYvaE_3GbkwKdQyRrew | Laowai Noodles | 5.0 | N/A | Pop-Up Restaurants
+MUsHl4mdVXVvvK_lb4OSYA | Boochmania | 5.0 | $$ | Kombucha
+9RqjjY1UHqD6hADEjopLRA | Binu Bonu | 5.0 | N/A | Wine Bars
+t9yIiXyDHlt26pKni0ss8w | Big Finish Wine Tavern | 5.0 | N/A | Wine Bars
+vuVUnIB58rnO-QCIEfngXw | Sushi Easy | 5.0 | N/A | Sushi Bars
+bqSZc4Xh2o253DZXr5QOmg | San Francisco Magic Theater At The Marrakech | 5.0 | $$ | Comedy Clubs
+L6gUtFFfTfCpiFruJvY1VQ | Ruby’s | 5.0 | N/A | New American
+IIbkZyiUC6RKUMjh286Wmw | Danny's Cafe | 5.0 | N/A | Cafes
+Sox3AnV57ky-_58ldPVZtg | La Joya Café | 4.9 | N/A | Cafes
+oV9fxdymGz6dMXcQdWaBfg | Ingredients | 4.9 | N/A | New American
+sJrlDmxVymCJ6AMS1GzBrg | KEN | 4.9 | $$$$ | Japanese
+iBWzETKflDhZkWLiKaHCPA | Crêpe Hearts | 4.9 | $$ | Caterers
+4F2BRZtqV039RLuPfokzaw | Moore Asian Fusion  | 4.9 | N/A | Asian Fusion
+DX7U7Q9-HkrVDSzTXBmcOg | Kiwa Kitchen | 4.9 | N/A | Japanese
+ZG-89Mspd0oFFA3k2ZH65A | Taste of India | 4.9 | N/A | Indian
+AUPB-R0mLSMxSEIVDXAzFA | Next Door | 4.9 | N/A | Bars
+u35gZWb4c5he7ery5uR1Nw | Teruaki | 4.9 | N/A | Japanese
+ay7ukQxmy5IR2GnaKoSG4Q | Los 3 Cachanillas | 4.9 | N/A | Tacos
+ay7ukQxmy5IR2GnaKoSG4Q | Los 3 Cachanillas | 4.9 | N/A | Tacos
+yIyQ8FywYQIxCGke8rR4MQ | Diwali Indian Cuisine | 4.9 | N/A | Indian
+473o_qobLXMjgM7eqCH07Q | Shampa's Pies | 4.9 | $$ | Desserts
+IIjOgq_zHFT6UHCfbEF_iQ | Sherpa House | 4.9 | $$ | Himalayan/Nepalese
+30ZNWGlvkrMxXn2fXUDSug | Ox & Tiger | 4.9 | $$$$ | Filipino
+gcOwxfJfg3wZxvCuiW0rzQ | Ocean Subs | 4.9 | N/A | Sandwiches
+xKqQGFaKbY41RfPZrtT6TQ | SF Organica | 4.9 | N/A | Coffee & Tea
+s1CbQVKh9DGan90GWTNgpQ | Bir Kitchen | 4.9 | N/A | Indian
+0M4M-nsgATBA8nN-ipMypg | Murales Wine Bar And Tapas | 4.9 | N/A | Tapas/Small Plates
+0lzgKoPjobLOojPrSXe4cw | Good Subs Market | 4.9 | N/A | Grocery
+OGo0TXsnom3mgg7i9tLXkw | Les Deux Amis | 4.9 | N/A | Cafes
+DbvbvhENBKd5zmv-KhvIVA | Legends Cafe & Creamery | 4.9 | N/A | Cafes
+tK6MSbTDxELEHyRYiqlS1A | Frenchie Wine Bar | 4.9 | N/A | Tapas Bars
+teuvVJneohDvVXd6PS5ZyA | Sarita’s Grill & Beer | 4.9 | N/A | Salvadoran
+qzPaClcyDTa9YLjvDC475g | Wolfsbane | 4.9 | N/A | Wine Bars
+Vlf7LMbQ0VNIP3PuViDhbA | La Cafeteria | 4.9 | N/A | Coffee & Tea
+PZuGAROy2IwRFWEsY6KjpQ | Naan & Pizza | 4.9 | N/A | Indian
+2-9MlxhiVf6LP7JgscwpHw | Bocadito | 4.9 | N/A | Pop-Up Restaurants
+8XtQCBtRHt1qRzMtroR7Xg | Cultivar Ghirardelli Square | 4.9 | N/A | Wine Tasting Room
+LpJRl7omZ13AWJyZjHi8zQ | Cafe Velora | 4.9 | N/A | Cafes
+M34J1bd4rjtvlLq7FdVcvg | HolyShred | 4.9 | N/A | Thai
+OkhXZn8nmGZyHO46s6NUMA | Pacifico | 4.9 | N/A | Colombian
+C1KKLpAVfOH4PsTHHWsAqQ | Ap’s Cafe | 4.9 | N/A | Cafes
+snvCNwBlYjvA0FJ6L8CyHA | Social Cafe | 4.9 | $ | Cuban
+sv6wVM3C9JyY7eAVb3qF5Q | Aedan Koji Kitchen | 4.9 | $$ | Japanese
+fdiCoYNaTBuGDvia4RemEw | SF Food Market | 4.9 | N/A | Salad
+ATj-8RmOJln9UnCEuraEzw | Noodle in a Haystack | 4.9 | $$$$ | Ramen
+pDe8b2Y2615M-2NhHRa-4w | San Francisco Wine & Cheese | 4.9 | $$ | Cheese Shops
+FWZaLUnb47Kg_crecTPpTA | Leadbetters Bake Shop | 4.9 | N/A | Bakeries
+f2HhToG8t60dywmNduOV_g | Taqueria Los Altos  | 4.9 | N/A | Tacos
+L9a1GXAQhOUt_uOoqAs-Mg | Oasis Fusion Kitchen | 4.9 | N/A | Waffles
+ognOJ7ivOd2SD-UPBiA2jQ | Sewa Indian and Nepalese Cuisine | 4.9 | N/A | Indian
+u1epvGOJ6qd7K7Og_SuJqw | MayaFlor | 4.9 | N/A | Breakfast & Brunch
+PPAbP5rweo5AT_0qEMH3Sg | Indigo | 4.8 | N/A | Cocktail Bars
+3aT47Fgzll2qXe4gcPGXNQ | Food Basket Market | 4.8 | N/A | Delis
+YmM_B3B2P9Ci-HBINOqTOQ | apizza & Loving Cup | 4.8 | N/A | Pizza
+54FhPcut3uFDbpNCRWUOlQ | Milos Meze | 4.8 | $$ | Greek
+fhOhZtDaWBEGrO9FDLGGgQ | Yuja | 4.8 | N/A | Pan Asian
+LIAMsumyQbaubYLFynXoZA | Cocina Mamá Cholita | 4.8 | $$ | Breakfast & Brunch
+0mGIlXKLncfxwOJj4JuBpw | Question Mark Bar | 4.8 | N/A | Bars
+eo67P4ZTkD8UpRqEfMMU4Q | Cafe Suspiro | 4.8 | $ | Coffee & Tea
+EuczgtYajVyKEEIUBGSykg | Freshito | 4.8 | N/A | Creperies
+6sMrtxZMa7OpUGSkqpjsDQ | K Five Fifty | 4.8 | N/A | Cafes
+URaM1-v3xBzgy0yG4KY90g | Bini’s Kitchen | 4.8 | N/A | Himalayan/Nepalese
+B4XYDQnVGmC-MaHC-qCbXg | Kolaj | 4.8 | N/A | Mediterranean
+-c0VRNWOg3lqczDkMH_wyg | Cardona’s Authentic Mexican Cuisine | 4.8 | N/A | Food Trucks
+RMD2w2KYa4Vm5EYZ6UCu4Q | Cheese Boutique | 4.8 | $ | Cheese Shops
+-ltL2TH7sJxBYuDX_J0hxQ | Viva Cafe | 4.8 | $ | Cafes
+KwMiT6kNt0tPiYz8N_-ikQ | Board and Drink | 4.8 | $$ | Breakfast & Brunch
+FgLsZLcqMwXTE0YuXizGRA | Chef Xiong Kitchen | 4.8 | N/A | Szechuan

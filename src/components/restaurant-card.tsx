@@ -3,7 +3,7 @@
 import type React from "react"
 
 import { useState } from "react"
-import { Heart, Star, MapPin } from "lucide-react"
+import { Heart, Star, MapPin, CheckCircle } from "lucide-react"
 import { type Restaurant, api } from "@/lib/api"
 
 interface RestaurantCardProps {
@@ -14,6 +14,8 @@ interface RestaurantCardProps {
 export function RestaurantCard({ restaurant, onClick }: RestaurantCardProps) {
   const [saved, setSaved] = useState(false)
   const [saving, setSaving] = useState(false)
+  const [visited, setVisited] = useState(false)
+  const [marking, setMarking] = useState(false)
 
   const handleSave = async (e: React.MouseEvent) => {
     e.stopPropagation()
@@ -27,6 +29,24 @@ export function RestaurantCard({ restaurant, onClick }: RestaurantCardProps) {
       console.error("Failed to save:", error)
     } finally {
       setSaving(false)
+    }
+  }
+
+  const handleBeenHere = async (e: React.MouseEvent) => {
+    e.stopPropagation()
+    if (marking || visited) return
+
+    setMarking(true)
+    try {
+      await api.logInteraction(restaurant.id || restaurant.restaurant_id || "", {
+        action_type: "visited",
+        context: "search",
+      })
+      setVisited(true)
+    } catch (error) {
+      console.error("Failed to mark as visited:", error)
+    } finally {
+      setMarking(false)
     }
   }
 
@@ -68,6 +88,19 @@ export function RestaurantCard({ restaurant, onClick }: RestaurantCardProps) {
 
       {/* Content */}
       <div className="p-4">
+        {/* Been Here Button */}
+        <button
+          onClick={handleBeenHere}
+          disabled={marking || visited}
+          className={`w-full mb-3 px-3 py-2 rounded-lg flex items-center justify-center gap-2 text-sm font-medium transition-all ${
+            visited
+              ? "bg-[#51CF66]/10 text-[#51CF66] border-2 border-[#51CF66]"
+              : "bg-[#F8F9FA] text-[#6C757D] border-2 border-[#DEE2E6] hover:border-[#51CF66] hover:text-[#51CF66]"
+          }`}
+        >
+          <CheckCircle className={`w-4 h-4 ${visited ? "fill-[#51CF66]" : ""}`} />
+          {visited ? "Been Here!" : "Been Here?"}
+        </button>
         <h3 className="font-bold text-lg text-[#2C3E50] mb-1 truncate">{restaurant.name}</h3>
         <div className="flex items-center gap-2 mb-2 flex-wrap">
           <div className="flex items-center">

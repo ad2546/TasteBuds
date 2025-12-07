@@ -3,8 +3,9 @@
 import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
 import { useAuth } from "@/lib/auth-context"
+import { getAvatarUrl } from "@/lib/avatar-utils"
 import { api, type TasteTwin } from "@/lib/api"
-import { Bell, Dice5, Search, Camera, Heart, Trophy, Sparkles, Users } from "lucide-react"
+import { Bell, Dice5, Search, Heart, Trophy, Sparkles, Users } from "lucide-react"
 import { ProtectedRoute } from "@/components/protected-route"
 import { Card, CardContent, Button, LoadingSpinner } from "@/components/ui"
 
@@ -39,7 +40,6 @@ function HomePageContent() {
 
   const quickActions = [
     { icon: Search, label: "Search", desc: "Find restaurants", href: "/search", color: "#D32323" },
-    { icon: Camera, label: "Snap to Find", desc: "Search by photo", href: "/image-search", color: "#C41200" },
     { icon: Users, label: "Find Twins", desc: `${twins.length} taste matches`, href: "/twins", color: "#D32323" },
     { icon: Heart, label: "Date Night", desc: "Plan together", href: "/date-night", color: "#BD1F1F" },
     { icon: Trophy, label: "Challenges", desc: "Earn rewards", href: "/challenges", color: "#C41200" },
@@ -70,11 +70,11 @@ function HomePageContent() {
               </button>
               <button
                 onClick={() => router.push("/profile")}
-                className="w-10 h-10 rounded-full ring-2 ring-white/30 overflow-hidden hover:ring-white/50 transition-all"
+                className="w-10 h-10 rounded-full ring-2 ring-white/30 overflow-hidden hover:ring-white/50 transition-all bg-white"
                 aria-label="Profile"
               >
                 <img
-                  src={user?.avatar_url || "/placeholder.svg?height=40&width=40&query=avatar person"}
+                  src={getAvatarUrl(user?.avatar_url, user?.id)}
                   alt="Profile"
                   className="w-full h-full object-cover"
                 />

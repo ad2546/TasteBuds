@@ -29,12 +29,9 @@ class YelpService:
         cache_key: Optional[str] = None,
         cache_ttl: int = 3600,
     ) -> Dict:
-        """Make HTTP request to Yelp API with optional caching."""
-        # Check cache first
-        if cache_key:
-            cached = await redis_client.get(cache_key)
-            if cached:
-                return cached
+        """Make HTTP request to Yelp API - always fetch fresh data, no caching."""
+        # DISABLED CACHING: Always fetch fresh data from Yelp API
+        # This ensures all restaurant data is real-time and up-to-date
 
         url = f"{self.BASE_URL}{endpoint}"
 
@@ -50,10 +47,7 @@ class YelpService:
                 response.raise_for_status()
                 data = response.json()
 
-                # Cache successful response
-                if cache_key:
-                    await redis_client.set(cache_key, data, ttl=cache_ttl)
-
+                # No caching - always return fresh data from Yelp
                 return data
             except httpx.HTTPStatusError as e:
                 raise YelpAPIException(f"Yelp API error: {e.response.status_code}")

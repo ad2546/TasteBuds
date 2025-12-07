@@ -70,10 +70,10 @@ export default function LoginPage() {
           </div>
 
           <h1 className="text-4xl font-extrabold text-white mb-3 tracking-tight">
-            TasteSync
+            TasteBuds
           </h1>
           <p className="text-white/90 text-lg font-medium">
-            Find your perfect dining match
+            Find your food friends
           </p>
         </div>
 

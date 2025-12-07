@@ -27,9 +27,14 @@ export default function AchievementsPage() {
 
   // Sample locked achievements for display
   const lockedAchievements = [
-    { id: "locked-1", title: "Spice Master", description: "Try 10 dishes with high spice levels" },
-    { id: "locked-2", title: "World Traveler", description: "Try 8 different cuisines" },
-    { id: "locked-3", title: "Social Butterfly", description: "Connect with 10 taste twins" },
+    { id: "first_visit", title: "First Step 🎯", description: "Mark your first restaurant as visited" },
+    { id: "explorer_5", title: "Explorer 🗺️", description: "Visit 5 restaurants" },
+    { id: "explorer_10", title: "Food Tourist ✈️", description: "Visit 10 restaurants" },
+    { id: "explorer_25", title: "Gastronome 👨‍🍳", description: "Visit 25 restaurants" },
+    { id: "explorer_50", title: "Culinary Legend 🏆", description: "Visit 50 restaurants" },
+    { id: "spice_master", title: "Spice Master 🌶️", description: "Visit 5 spicy restaurants" },
+    { id: "world_traveler", title: "World Traveler 🌍", description: "Try 8 different cuisines" },
+    { id: "social_butterfly", title: "Social Butterfly 🦋", description: "Connect with 10 taste twins" },
   ]
 
   if (loading) {

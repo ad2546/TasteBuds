@@ -12,16 +12,30 @@ class API {
 
   private async handleResponse<T>(response: Response): Promise<T> {
     if (!response.ok) {
-      const error = await response.json().catch(() => ({ detail: "Request failed" }))
-      const errorMessage = typeof error.detail === 'string'
-        ? error.detail
-        : JSON.stringify(error.detail || error)
+      let errorMessage = `HTTP ${response.status}: ${response.statusText}`
+
+      try {
+        const error = await response.json()
+        if (error.detail) {
+          errorMessage = typeof error.detail === 'string'
+            ? error.detail
+            : JSON.stringify(error.detail)
+        } else if (error.message) {
+          errorMessage = error.message
+        }
+      } catch (e) {
+        // Failed to parse JSON error, use status text
+        errorMessage = `${response.status} ${response.statusText || 'Error'}`
+      }
+
       console.error('API Error:', {
         status: response.status,
         url: response.url,
         error: errorMessage
       })
-      throw new Error(errorMessage || "Something went wrong")
+
+      // Include status code in error message for better handling
+      throw new Error(`${response.status === 404 ? '404: ' : ''}${errorMessage}`)
     }
     return response.json()
   }
@@ -137,7 +151,10 @@ class API {
   }
 
   async getRestaurant(restaurantId: string) {
-    const response = await fetch(`${API_BASE_URL}/restaurants/${restaurantId}`, { headers: this.getHeaders() })
+    const url = `${API_BASE_URL}/restaurants/${restaurantId}`
+    console.log('Fetching restaurant from:', url, 'ID:', restaurantId)
+    const response = await fetch(url, { headers: this.getHeaders() })
+    console.log('Restaurant response status:', response.status)
     return this.handleResponse<RestaurantDetail>(response)
   }
 
@@ -160,6 +177,15 @@ class API {
       headers: this.getHeaders(),
     })
     return this.handleResponse<SavedRestaurant[]>(response)
+  }
+
+  async logInteraction(restaurantId: string, data: { action_type: string; context?: string }) {
+    const response = await fetch(`${API_BASE_URL}/restaurants/${restaurantId}/log`, {
+      method: "POST",
+      headers: this.getHeaders(),
+      body: JSON.stringify(data),
+    })
+    return this.handleResponse<{ message: string }>(response)
   }
 
   // Date Night
@@ -387,6 +413,7 @@ export interface Restaurant {
   distance: number
   match_score: number
   why_match?: string
+  url?: string
 }
 
 export interface FeelingLuckyResponse extends Restaurant {

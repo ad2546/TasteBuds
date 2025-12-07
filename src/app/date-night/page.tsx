@@ -2,6 +2,7 @@
 
 import { useState, useEffect, Suspense } from "react"
 import { useRouter, useSearchParams } from "next/navigation"
+import { getAvatarUrl } from "@/lib/avatar-utils"
 import { api, type TasteTwin, type CompatibilityResponse, type Restaurant } from "@/lib/api"
 import { RestaurantCard } from "@/components/restaurant-card"
 import { ArrowLeft, Heart, Loader2, Sparkles, Users } from "lucide-react"
@@ -111,9 +112,9 @@ function DateNightPageContent() {
                       className="w-full flex items-center gap-3 p-3 rounded-xl border border-[#E9ECEF] hover:border-[#FF6B6B] hover:bg-[#FFE5E5]/20 transition-all"
                     >
                       <img
-                        src={twin.avatar_url || "/placeholder.svg?height=48&width=48&query=avatar"}
+                        src={getAvatarUrl(twin.avatar_url, twin.twin_id)}
                         alt={twin.name}
-                        className="w-12 h-12 rounded-full object-cover"
+                        className="w-12 h-12 rounded-full object-cover bg-white"
                       />
                       <div className="flex-1 text-left">
                         <p className="font-medium text-[#2C3E50]">{twin.name}</p>
@@ -142,9 +143,9 @@ function DateNightPageContent() {
             <div className="bg-white rounded-2xl shadow-lg p-4 mb-6">
               <div className="flex items-center gap-3 mb-4">
                 <img
-                  src={selectedTwin.avatar_url || "/placeholder.svg?height=48&width=48&query=avatar"}
+                  src={getAvatarUrl(selectedTwin.avatar_url, selectedTwin.twin_id)}
                   alt={selectedTwin.name}
-                  className="w-12 h-12 rounded-full object-cover ring-2 ring-[#FF6B6B]"
+                  className="w-12 h-12 rounded-full object-cover ring-2 ring-[#FF6B6B] bg-white"
                 />
                 <div>
                   <p className="font-semibold text-[#2C3E50]">Date with {selectedTwin.name}</p>

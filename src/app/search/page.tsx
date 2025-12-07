@@ -118,7 +118,11 @@ export default function SearchPage() {
               <RestaurantCard
                 key={restaurant.id}
                 restaurant={restaurant}
-                onClick={() => router.push(`/restaurant/${restaurant.id}`)}
+                onClick={() => {
+                  if (restaurant.url) {
+                    window.open(restaurant.url, '_blank')
+                  }
+                }}
               />
             ))}
           </div>

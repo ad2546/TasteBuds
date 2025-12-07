@@ -186,6 +186,59 @@ class TwinMatchingService:
                     "spice_tolerance": twin_dna.spice_tolerance if twin_dna else 0.0,
                 })
 
+        # MINIMUM TWINS GUARANTEE: Ensure at least 5 twins if possible
+        MIN_TWINS = 5
+        if len(twins) < MIN_TWINS:
+            # Get user's taste DNA to find similar users
+            user_dna_result = await db.execute(
+                select(TasteDNA).where(TasteDNA.user_id == user_id)
+            )
+            user_dna = user_dna_result.scalar_one_or_none()
+
+            if user_dna:
+                # Get existing twin IDs
+                existing_twin_ids = {t["twin_id"] for t in twins}
+
+                # Find additional users who aren't already twins
+                additional_users_result = await db.execute(
+                    select(User)
+                    .join(TasteDNA, TasteDNA.user_id == User.id)
+                    .where(
+                        User.id != user_id,
+                        ~User.id.in_([UUID(tid) for tid in existing_twin_ids])
+                    )
+                    .limit(MIN_TWINS - len(twins))
+                )
+                additional_users = additional_users_result.scalars().all()
+
+                # Add them as twins with a default similarity score
+                for additional_user in additional_users:
+                    additional_dna_result = await db.execute(
+                        select(TasteDNA).where(TasteDNA.user_id == additional_user.id)
+                    )
+                    additional_dna = additional_dna_result.scalar_one_or_none()
+
+                    # Calculate basic similarity based on shared preferences
+                    shared_cuisines = []
+                    if additional_dna and user_dna.preferred_cuisines and additional_dna.preferred_cuisines:
+                        user_cuisines = set(user_dna.preferred_cuisines)
+                        other_cuisines = set(additional_dna.preferred_cuisines)
+                        shared_cuisines = list(user_cuisines & other_cuisines)
+
+                    # Default similarity score (lower than matched twins)
+                    default_score = 0.5
+
+                    twins.append({
+                        "twin_id": str(additional_user.id),
+                        "name": additional_user.name,
+                        "email": additional_user.email,
+                        "avatar_url": additional_user.avatar_url,
+                        "similarity_score": default_score,
+                        "shared_cuisines": shared_cuisines,
+                        "adventure_score": additional_dna.adventure_score if additional_dna else 0.0,
+                        "spice_tolerance": additional_dna.spice_tolerance if additional_dna else 0.0,
+                    })
+
         # Cache results
         if twins:
             await redis_client.set(cache_key, twins, ttl=900)  # 15 minutes

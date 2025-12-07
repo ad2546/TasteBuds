@@ -45,7 +45,7 @@ function ProfilePageContent() {
         </div>
       </div>
 
-      <div className="max-w-md mx-auto px-4 -mt-8">
+      <div className="max-w-md mx-auto px-4 -mt-8 pb-24">
         {/* Stats Card */}
         <div className="bg-white rounded-2xl shadow-lg p-4 mb-6">
           <div className="grid grid-cols-3 divide-x divide-[#E9ECEF]">

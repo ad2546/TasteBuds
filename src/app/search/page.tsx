@@ -75,7 +75,7 @@ export default function SearchPage() {
         </div>
       </div>
 
-      <div className="max-w-md mx-auto p-4">
+      <div className="max-w-md mx-auto p-4 pb-32">
         {!searched ? (
           <>
             {/* Popular Categories */}

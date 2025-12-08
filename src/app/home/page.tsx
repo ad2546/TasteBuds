@@ -50,7 +50,7 @@ function HomePageContent() {
   }
 
   return (
-    <div className="min-h-screen bg-neutral-50 pb-20">
+    <div className="min-h-screen bg-neutral-50 pb-32">
       {/* Header */}
       <div className="bg-[#FF6B6B] px-4 pt-4 pb-8">
         <div className="max-w-md mx-auto">

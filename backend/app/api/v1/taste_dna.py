@@ -55,6 +55,12 @@ async def submit_quiz(
         db, current_user.id, twins
     )
 
+    # Invalidate cache for all users who have this user as a twin
+    # So their twin lists will be refreshed on next request
+    for twin in twins:
+        twin_cache_key = f"twins:{twin['twin_id']}"
+        await redis_client.delete(twin_cache_key)
+
     # Get top twin similarity
     top_similarity = twins[0]["similarity_score"] if twins else None
 

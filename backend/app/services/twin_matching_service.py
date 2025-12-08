@@ -93,7 +93,7 @@ class TwinMatchingService:
         for twin_data in twins_data:
             twin_user_id = twin_data["user_id"]
             result = await db.execute(
-                select(User).where(User.id == UUID(twin_user_id))
+                select(User).where(User.id == twin_user_id)
             )
             twin_user = result.scalar_one_or_none()
 

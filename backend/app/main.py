@@ -43,6 +43,7 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
     expose_headers=["*"],
+    max_age=0,  # Disable preflight caching to fix browser cache issues
 )
 
 # Include API router

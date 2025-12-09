@@ -65,7 +65,7 @@ export default function AchievementsPage() {
         </div>
       </div>
 
-      <div className="max-w-md mx-auto px-4 -mt-6 pb-8">
+      <div className="max-w-md mx-auto px-4 -mt-6 pb-6">
         {/* Earned Achievements */}
         {achievements.length > 0 && (
           <div className="mb-6">

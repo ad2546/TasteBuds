@@ -93,7 +93,7 @@ function DateNightPageContent() {
         </div>
       </div>
 
-      <div className="max-w-md mx-auto px-4 -mt-4">
+      <div className="max-w-md mx-auto px-4 -mt-4 pb-6">
         {!selectedTwin ? (
           <>
             {/* Select Partner */}

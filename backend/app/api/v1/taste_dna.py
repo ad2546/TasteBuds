@@ -4,6 +4,7 @@ from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.db.session import get_db
+from app.db.redis_client import redis_client
 from app.schemas.taste_dna import (
     QuizResponse,
     QuizSubmission,
@@ -54,6 +55,10 @@ async def submit_quiz(
     await twin_matching_service.update_twin_relationships(
         db, current_user.id, twins
     )
+
+    # Invalidate cache for the current user (who just submitted the quiz)
+    current_user_cache_key = f"twins:{current_user.id}"
+    await redis_client.delete(current_user_cache_key)
 
     # Invalidate cache for all users who have this user as a twin
     # So their twin lists will be refreshed on next request

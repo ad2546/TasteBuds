@@ -8,4 +8,4 @@
 
 [build.environment]
   NODE_VERSION = "20"
-  # Force rebuild to clear browser CORS cache
+  NEXT_PUBLIC_API_URL = "https://tastebuds-nzx0.onrender.com/api/v1"

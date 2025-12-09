@@ -45,7 +45,7 @@ services:
       - key: JWT_SECRET_KEY
         generateValue: true
       - key: ALLOWED_ORIGINS
-        value: https://neon-strudel-0bb18c.netlify.app
+        value: https://neon-strudel-0bb18c.netlify.app,https://effervescent-narwhal-66057a.netlify.app
 
 databases:
   - name: tastesync-db

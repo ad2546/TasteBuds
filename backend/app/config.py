@@ -61,6 +61,7 @@ class Settings(BaseSettings):
             "http://192.168.1.81:3000",
             "http://192.168.1.81:3001",
             "https://neon-strudel-0bb18c.netlify.app",
+            "https://effervescent-narwhal-66057a.netlify.app",
         ]
         return default_origins
 

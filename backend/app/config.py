@@ -42,16 +42,27 @@ class Settings(BaseSettings):
     jwt_algorithm: str = "HS256"
     jwt_expiration_hours: int = 24
 
-    # CORS - Explicitly allow localhost and network IPs for mobile development
-    cors_origins: List[str] = [
-        "http://localhost:3000",
-        "http://localhost:3001",
-        "http://127.0.0.1:3000",
-        "http://127.0.0.1:3001",
-        "http://192.168.1.81:3000",
-        "http://192.168.1.81:3001",
-        "https://neon-strudel-0bb18c.netlify.app",
-    ]
+    # CORS - Can be overridden with ALLOWED_ORIGINS env var (comma-separated)
+    allowed_origins: str = ""  # Empty means use default list
+
+    @property
+    def cors_origins(self) -> List[str]:
+        """Get CORS allowed origins - supports env override or defaults."""
+        # If ALLOWED_ORIGINS is set, use it (comma-separated)
+        if self.allowed_origins:
+            return [origin.strip() for origin in self.allowed_origins.split(",")]
+
+        # Default origins for development and production
+        default_origins = [
+            "http://localhost:3000",
+            "http://localhost:3001",
+            "http://127.0.0.1:3000",
+            "http://127.0.0.1:3001",
+            "http://192.168.1.81:3000",
+            "http://192.168.1.81:3001",
+            "https://neon-strudel-0bb18c.netlify.app",
+        ]
+        return default_origins
 
     @property
     def database_url(self) -> str:

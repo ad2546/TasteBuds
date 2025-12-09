@@ -17,9 +17,25 @@ async def lifespan(app: FastAPI):
     """Application lifespan manager for startup/shutdown events."""
     # Startup
     await init_db()
+
+    # Initialize Redis
+    from app.db.redis_client import redis_client
+    try:
+        await redis_client.connect()
+        print("✓ Redis connected successfully")
+    except Exception as e:
+        print(f"⚠ Warning: Redis connection failed: {e}")
+
+    # Initialize Pinecone
+    from app.db.pinecone_client import pinecone_client
+    pinecone_client.initialize()
+    print("✓ Pinecone initialized")
+
     yield
+
     # Shutdown
-    pass
+    await redis_client.disconnect()
+    print("✓ Redis disconnected")
 
 
 app = FastAPI(
@@ -64,3 +80,14 @@ async def root():
 async def health_check():
     """Health check endpoint."""
     return {"status": "healthy"}
+
+
+@app.get("/config")
+async def get_config():
+    """Debug endpoint to check configuration."""
+    return {
+        "app_env": settings.app_env,
+        "debug": settings.debug,
+        "cors_origins": settings.cors_origins,
+        "database_configured": bool(settings.database_url),
+    }

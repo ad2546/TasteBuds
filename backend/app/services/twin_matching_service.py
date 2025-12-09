@@ -104,7 +104,7 @@ class TwinMatchingService:
                 common = list(twin_cuisines & user_cuisines)
 
                 twins.append({
-                    "twin_id": twin_user_id,
+                    "twin_id": str(twin_user_id),  # Ensure it's a string
                     "name": twin_user.name,
                     "email": twin_user.email,
                     "avatar_url": twin_user.avatar_url,
@@ -123,16 +123,24 @@ class TwinMatchingService:
         twins: List[Dict],
     ):
         """Store or update twin relationships in database."""
+        # Convert UUID to string for database (using String(36) column type)
+        user_id_str = str(user_id)
+
         # Delete existing relationships for this user
         await db.execute(
-            delete(TwinRelationship).where(TwinRelationship.user_id == user_id)
+            delete(TwinRelationship).where(TwinRelationship.user_id == user_id_str)
         )
 
         # Create new relationships
         for twin in twins:
+            # Ensure twin_user_id is a string (might be UUID object in some cases)
+            twin_user_id = str(twin["twin_id"]) if twin["twin_id"] else None
+            if not twin_user_id:
+                continue  # Skip if no valid ID
+
             relationship = TwinRelationship(
-                user_id=user_id,
-                twin_user_id=UUID(twin["twin_id"]),
+                user_id=user_id_str,
+                twin_user_id=twin_user_id,
                 similarity_score=twin["similarity_score"],
                 common_cuisines=twin["shared_cuisines"],
             )
@@ -196,16 +204,17 @@ class TwinMatchingService:
             user_dna = user_dna_result.scalar_one_or_none()
 
             if user_dna:
-                # Get existing twin IDs
+                # Get existing twin IDs (already strings from Pinecone)
                 existing_twin_ids = {t["twin_id"] for t in twins}
 
                 # Find additional users who aren't already twins
+                # Convert user_id to string for comparison
                 additional_users_result = await db.execute(
                     select(User)
                     .join(TasteDNA, TasteDNA.user_id == User.id)
                     .where(
-                        User.id != user_id,
-                        ~User.id.in_([UUID(tid) for tid in existing_twin_ids])
+                        User.id != str(user_id),
+                        ~User.id.in_(list(existing_twin_ids))  # Already strings, no need to convert
                     )
                     .limit(MIN_TWINS - len(twins))
                 )

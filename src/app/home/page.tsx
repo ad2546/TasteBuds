@@ -50,18 +50,18 @@ function HomePageContent() {
   }
 
   return (
-    <div className="min-h-screen bg-neutral-50 pb-32">
+    <div className="min-h-screen bg-neutral-50 pb-[60px] md:pb-32">
       {/* Header */}
       <div className="bg-[#FF6B6B] px-4 pt-4 pb-8">
         <div className="max-w-md mx-auto">
-          <div className="flex items-center justify-between mb-6">
-            <div>
+          <div className="flex items-center justify-between mb-6 gap-3">
+            <div className="flex-1 min-w-0">
               <p className="text-white/80 text-sm">Welcome back,</p>
-              <h1 className="text-2xl font-bold text-white">
+              <h1 className="text-2xl font-bold text-white truncate">
                 {user?.name?.split(" ")[0] || user?.name || ""}
               </h1>
             </div>
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-3 flex-shrink-0">
               <button
                 className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center hover:bg-white/30 transition-colors"
                 aria-label="Notifications"

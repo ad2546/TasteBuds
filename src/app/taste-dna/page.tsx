@@ -41,7 +41,7 @@ function TasteDNAPageContent() {
   const diversityPercent = Math.round((profile?.cuisine_diversity || 0) * 100)
 
   return (
-    <div className="min-h-screen bg-neutral-50">
+    <div className="min-h-screen bg-neutral-50 pb-[60px] md:pb-0">
       {/* Header */}
       <div className="bg-[#FF6B6B] px-4 pt-4 pb-8">
         <div className="max-w-md mx-auto">
@@ -64,7 +64,7 @@ function TasteDNAPageContent() {
         </div>
       </div>
 
-      <div className="max-w-md mx-auto px-4 -mt-4 pb-20">
+      <div className="max-w-md mx-auto px-4 -mt-4">
         {/* DNA Card */}
         <div className="bg-white rounded-2xl shadow-xl p-6 mb-6 relative overflow-hidden border-2 border-[#FF6B6B]/20">
           <div className="relative">

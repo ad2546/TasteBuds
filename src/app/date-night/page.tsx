@@ -74,7 +74,7 @@ function DateNightPageContent() {
   }
 
   return (
-    <div className="min-h-screen bg-[#F8F9FA] pb-24">
+    <div className="min-h-screen bg-[#F8F9FA] pb-[60px] md:pb-0">
       {/* Header */}
       <div className="bg-[#FF6B6B] px-4 pt-4 pb-8">
         <div className="max-w-md mx-auto">
@@ -93,7 +93,7 @@ function DateNightPageContent() {
         </div>
       </div>
 
-      <div className="max-w-md mx-auto px-4 -mt-4 pb-32">
+      <div className="max-w-md mx-auto px-4 -mt-4">
         {!selectedTwin ? (
           <>
             {/* Select Partner */}

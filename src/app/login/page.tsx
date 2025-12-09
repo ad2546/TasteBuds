@@ -45,12 +45,6 @@ export default function LoginPage() {
     }
   }
 
-  const fillDemoAccount = () => {
-    setEmail("evelyn.davis481@example.com")
-    setPassword("password123")
-    setMode("login")
-  }
-
   return (
     <div className="min-h-screen bg-[#FF6B6B] flex items-center justify-center p-4">
       {/* Animated background elements */}
@@ -197,35 +191,6 @@ export default function LoginPage() {
             </div>
           )}
         </Card>
-
-        {/* Demo Account */}
-        <div className="mt-6 animate-[fadeIn_0.5s_ease-out_0.4s_both]">
-          <button
-            onClick={fillDemoAccount}
-            className="
-              w-full bg-white/10 backdrop-blur-sm border-2 border-white/30
-              rounded-2xl p-5 text-left
-              hover:bg-white/20 hover:border-white/50
-              transition-all duration-200
-              group
-            "
-            aria-label="Use demo account"
-          >
-            <div className="flex items-start gap-3">
-              <div className="w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center flex-shrink-0">
-                <Sparkles className="w-5 h-5 text-white" aria-hidden="true" />
-              </div>
-              <div className="flex-1">
-                <p className="text-white font-semibold mb-1 group-hover:translate-x-1 transition-transform">
-                  Try Demo Account
-                </p>
-                <p className="text-white/80 text-sm">
-                  Test all features with our sample account
-                </p>
-              </div>
-            </div>
-          </button>
-        </div>
 
         {/* Privacy Note */}
         <p className="mt-6 text-center text-white/60 text-xs">

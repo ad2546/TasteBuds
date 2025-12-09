@@ -280,7 +280,7 @@ function FeelingLuckyPageContent() {
   }
 
   return (
-    <div className="min-h-screen bg-[#F8F9FA]">
+    <div className="min-h-screen bg-[#F8F9FA] pb-[60px] md:pb-0">
       {/* Header Image */}
       <div className="relative h-72">
         <img

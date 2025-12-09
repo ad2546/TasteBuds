@@ -76,7 +76,7 @@ export function DesktopWrapper({ children }: { children: React.ReactNode }) {
 
                 {/* App content - 18:9 aspect ratio */}
                 <div className="bg-white w-[360px] h-[720px] overflow-hidden flex flex-col relative">
-                  <div className="flex-1 overflow-y-auto scrollbar-hide pb-[72px]">
+                  <div className="flex-1 overflow-y-auto scrollbar-hide">
                     {children}
                   </div>
                 </div>

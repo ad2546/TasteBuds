@@ -3,15 +3,16 @@
 import type React from "react"
 
 import { useState } from "react"
-import { Heart, Star, MapPin, CheckCircle } from "lucide-react"
+import { Heart, Star, MapPin, CheckCircle, Sparkles } from "lucide-react"
 import { type Restaurant, api } from "@/lib/api"
 
 interface RestaurantCardProps {
   restaurant: Restaurant
   onClick?: () => void
+  isSponsored?: boolean
 }
 
-export function RestaurantCard({ restaurant, onClick }: RestaurantCardProps) {
+export function RestaurantCard({ restaurant, onClick, isSponsored = false }: RestaurantCardProps) {
   const [saved, setSaved] = useState(false)
   const [saving, setSaving] = useState(false)
   const [visited, setVisited] = useState(false)
@@ -79,6 +80,14 @@ export function RestaurantCard({ restaurant, onClick }: RestaurantCardProps) {
               <MapPin className="w-12 h-12 text-gray-400 mx-auto mb-2" />
               <p className="text-gray-500 text-sm font-medium">{restaurant.name}</p>
             </div>
+          </div>
+        )}
+
+        {/* Sponsored Banner */}
+        {isSponsored && (
+          <div className="absolute top-0 left-0 right-0 bg-gradient-to-r from-[#FFA94D] to-[#FFB84D] px-3 py-1.5 flex items-center justify-center gap-1.5">
+            <Sparkles className="w-4 h-4 text-white" />
+            <span className="text-white font-semibold text-xs uppercase tracking-wide">Sponsored</span>
           </div>
         )}
 

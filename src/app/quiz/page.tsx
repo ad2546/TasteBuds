@@ -141,7 +141,7 @@ export default function QuizPage() {
   }
 
   return (
-    <div className="min-h-screen bg-white p-4 pb-32">
+    <div className="min-h-screen bg-white p-4 pb-[60px] md:pb-32">
       <div className="max-w-md mx-auto pt-8 pb-8">
         {/* Header */}
         <div className="text-center mb-8">

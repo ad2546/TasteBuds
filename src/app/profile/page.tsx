@@ -26,7 +26,7 @@ function ProfilePageContent() {
   ]
 
   return (
-    <div className="min-h-screen bg-[#F8F9FA]">
+    <div className="min-h-screen bg-[#F8F9FA] pb-[60px] md:pb-0">
       {/* Profile Header */}
       <div className="bg-[#FF6B6B] px-4 pt-8 pb-16">
         <div className="max-w-md mx-auto text-center">
@@ -45,7 +45,7 @@ function ProfilePageContent() {
         </div>
       </div>
 
-      <div className="max-w-md mx-auto px-4 -mt-8 pb-32">
+      <div className="max-w-md mx-auto px-4 -mt-8">
         {/* Stats Card */}
         <div className="bg-white rounded-2xl shadow-lg p-4 mb-6">
           <div className="grid grid-cols-3 divide-x divide-[#E9ECEF]">

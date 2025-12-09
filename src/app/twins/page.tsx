@@ -62,7 +62,7 @@ function TwinsPageContent() {
   }
 
   return (
-    <div className="min-h-screen bg-[#F8F9FA]">
+    <div className="min-h-screen bg-[#F8F9FA] pb-[60px] md:pb-0">
       {/* Header */}
       <div className="bg-[#FF6B6B] px-4 pt-4 pb-12">
         <div className="max-w-md mx-auto">
@@ -90,7 +90,7 @@ function TwinsPageContent() {
         </div>
       </div>
 
-      <div className="max-w-md mx-auto px-4 -mt-6 pb-32">
+      <div className="max-w-md mx-auto px-4 -mt-6">
         {twins.length > 0 ? (
           <div className="space-y-4">
             {twins.map((twin) => (

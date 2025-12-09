@@ -3,6 +3,7 @@
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { Home, Search, Heart, Trophy, User } from "lucide-react"
+import { useAuth } from "@/lib/auth-context"
 
 const navItems = [
   { href: "/home", icon: Home, label: "Home" },
@@ -14,9 +15,15 @@ const navItems = [
 
 export function BottomNav() {
   const pathname = usePathname()
+  const { isAuthenticated, isLoading } = useAuth()
+
+  // Don't show nav on login page or when not authenticated
+  if (isLoading || !isAuthenticated || pathname === "/login" || pathname === "/") {
+    return null
+  }
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 bg-white border-t border-[#E9ECEF] px-4 py-2 z-50">
+    <nav className="fixed bottom-0 left-0 right-0 bg-white border-t border-[#E9ECEF] px-4 py-2 z-50 md:max-w-[360px] md:mx-auto">
       <div className="max-w-md mx-auto flex items-center justify-around">
         {navItems.map(({ href, icon: Icon, label }) => {
           const isActive = pathname === href

@@ -33,7 +33,7 @@ function SavedPageContent() {
   }
 
   return (
-    <div className="min-h-screen bg-[#F8F9FA]">
+    <div className="min-h-screen bg-[#F8F9FA] pb-[60px] md:pb-0">
       {/* Header */}
       <div className="bg-white border-b border-[#E9ECEF] px-4 py-4">
         <div className="max-w-md mx-auto">

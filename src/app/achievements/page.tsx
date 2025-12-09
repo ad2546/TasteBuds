@@ -46,7 +46,7 @@ export default function AchievementsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#F8F9FA]">
+    <div className="min-h-screen bg-[#F8F9FA] pb-[60px] md:pb-0">
       {/* Header */}
       <div className="bg-[#FF6B6B] px-4 pt-4 pb-12">
         <div className="max-w-md mx-auto">

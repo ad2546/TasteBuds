@@ -1416,15 +1416,15 @@
   {
     "id": "5b4026e4-66ad-483c-9b61-4e849f5a07c3",
     "user_id": "49358f09-d38b-4da0-bd91-ee25052973b9",
-    "adventure_score": 0.64,
-    "spice_tolerance": 0.5,
-    "price_sensitivity": 0.73,
-    "cuisine_diversity": 0.6,
-    "ambiance_preference": "upscale",
-    "preferred_cuisines": "[\"thai\"]",
-    "dietary_restrictions": "[\"vegetarian\"]",
-    "quiz_answers": "[{\"question_id\": \"swipe_1\", \"answer_type\": \"swipe_right\", \"value\": null, \"choice\": \"right\"}, {\"question_id\": \"swipe_2\", \"answer_type\": \"swipe_right\", \"value\": null, \"choice\": \"right\"}, {\"question_id\": \"swipe_3\", \"answer_type\": \"swipe_right\", \"value\": null, \"choice\": \"right\"}, {\"question_id\": \"swipe_4\", \"answer_type\": \"swipe_right\", \"value\": null, \"choice\": \"right\"}, {\"question_id\": \"swipe_5\", \"answer_type\": \"swipe_right\", \"value\": null, \"choice\": \"right\"}, {\"question_id\": \"adventure_level\", \"answer_type\": \"slider_value\", \"value\": 0.65, \"choice\": null}, {\"question_id\": \"price_range\", \"answer_type\": \"slider_value\", \"value\": 0.73, \"choice\": null}, {\"question_id\": \"ambiance_pref\", \"answer_type\": \"choice\", \"value\": null, \"choice\": \"upscale\"}, {\"question_id\": \"cuisine_variety\", \"answer_type\": \"slider_value\", \"value\": 0.6, \"choice\": null}, {\"question_id\": \"preferred_cuisines\", \"answer_type\": \"choice\", \"value\": null, \"choice\": \"thai\"}, {\"question_id\": \"dietary_restrictions\", \"answer_type\": \"choice\", \"value\": null, \"choice\": \"vegetarian\"}]",
+    "adventure_score": 0.57,
+    "spice_tolerance": 0.76,
+    "price_sensitivity": 0.11,
+    "cuisine_diversity": 0.81,
+    "ambiance_preference": "lively",
+    "preferred_cuisines": "[\"indian\", \"mexican\", \"korean\"]",
+    "dietary_restrictions": "[]",
+    "quiz_answers": "[{\"question_id\": \"swipe_1\", \"answer_type\": \"swipe_right\", \"value\": null, \"choice\": \"right\"}, {\"question_id\": \"swipe_2\", \"answer_type\": \"swipe_left\", \"value\": null, \"choice\": \"left\"}, {\"question_id\": \"swipe_3\", \"answer_type\": \"swipe_left\", \"value\": null, \"choice\": \"left\"}, {\"question_id\": \"swipe_4\", \"answer_type\": \"swipe_right\", \"value\": null, \"choice\": \"right\"}, {\"question_id\": \"swipe_5\", \"answer_type\": \"swipe_right\", \"value\": null, \"choice\": \"right\"}, {\"question_id\": \"spice_tolerance\", \"answer_type\": \"slider_value\", \"value\": 0.76, \"choice\": null}, {\"question_id\": \"adventure_level\", \"answer_type\": \"slider_value\", \"value\": 0.71, \"choice\": null}, {\"question_id\": \"price_range\", \"answer_type\": \"slider_value\", \"value\": 0.11, \"choice\": null}, {\"question_id\": \"ambiance_pref\", \"answer_type\": \"choice\", \"value\": null, \"choice\": \"lively\"}, {\"question_id\": \"cuisine_variety\", \"answer_type\": \"slider_value\", \"value\": 0.81, \"choice\": null}, {\"question_id\": \"preferred_cuisines\", \"answer_type\": \"choice\", \"value\": null, \"choice\": \"indian,mexican,korean\"}, {\"question_id\": \"dietary_restrictions\", \"answer_type\": \"choice\", \"value\": null, \"choice\": \"none\"}]",
     "created_at": "2025-12-06 00:19:56.778660",
-    "updated_at": "2025-12-07 05:56:07.180472"
+    "updated_at": "2025-12-08 04:09:02.728306"
   }
 ]

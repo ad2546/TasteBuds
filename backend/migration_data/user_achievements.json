@@ -1,1 +1,16 @@
-[]
+[
+  {
+    "id": "5f908043-5fdb-4b9f-b6b8-389ed748771b",
+    "user_id": "49358f09-d38b-4da0-bd91-ee25052973b9",
+    "achievement_type": "explorer_5",
+    "achievement_data": null,
+    "earned_at": "2025-12-07 18:43:20.195773"
+  },
+  {
+    "id": "b1d7c1d7-4c83-49f6-a715-0a62f26dea05",
+    "user_id": "49358f09-d38b-4da0-bd91-ee25052973b9",
+    "achievement_type": "explorer_10",
+    "achievement_data": null,
+    "earned_at": "2025-12-07 18:43:41.701017"
+  }
+]

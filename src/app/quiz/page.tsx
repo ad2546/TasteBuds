@@ -14,6 +14,15 @@ export default function QuizPage() {
   const [answers, setAnswers] = useState<Record<string, any>>({})
   const [loading, setLoading] = useState(true)
   const [submitting, setSubmitting] = useState(false)
+  const [loadingMessage, setLoadingMessage] = useState("Warming up the taste buds...")
+
+  const loadingMessages = [
+    "Taste buds are cooking, please wait...",
+    "Analyzing your flavor profile...",
+    "Finding your food soulmates...",
+    "Matching you with taste twins...",
+    "Almost there! Creating your DNA..."
+  ]
 
   useEffect(() => {
     loadQuiz()
@@ -88,6 +97,14 @@ export default function QuizPage() {
 
   const handleSubmit = async () => {
     setSubmitting(true)
+
+    // Cycle through loading messages
+    let messageIndex = 0
+    const messageInterval = setInterval(() => {
+      messageIndex = (messageIndex + 1) % loadingMessages.length
+      setLoadingMessage(loadingMessages[messageIndex])
+    }, 2000)
+
     try {
       const quizAnswers: QuizAnswer[] = Object.entries(answers).map(([id, answer]) => {
         const question = questions.find(q => q.id === id)
@@ -128,6 +145,7 @@ export default function QuizPage() {
     } catch (error) {
       console.error("Failed to submit quiz:", error)
     } finally {
+      clearInterval(messageInterval)
       setSubmitting(false)
     }
   }
@@ -323,15 +341,18 @@ export default function QuizPage() {
             <button
               onClick={handleSubmit}
               disabled={!canProceed() || submitting}
-              className="flex-1 h-12 rounded-xl bg-[#FF6B6B] text-white font-semibold hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed transition-all flex items-center justify-center gap-2"
+              className="flex-1 h-12 rounded-xl bg-[#FF6B6B] text-white font-semibold hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed transition-all flex flex-col items-center justify-center gap-1"
             >
               {submitting ? (
-                <Loader2 className="w-5 h-5 animate-spin" />
-              ) : (
                 <>
+                  <Loader2 className="w-5 h-5 animate-spin" />
+                  <span className="text-xs">{loadingMessage}</span>
+                </>
+              ) : (
+                <div className="flex items-center gap-2">
                   <Sparkles className="w-5 h-5" />
                   Complete
-                </>
+                </div>
               )}
             </button>
           )}

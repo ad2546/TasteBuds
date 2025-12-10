@@ -18,11 +18,27 @@ export default function LoginPage() {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState("")
   const [focusedField, setFocusedField] = useState<string | null>(null)
+  const [loadingMessage, setLoadingMessage] = useState("Taste buds are cooking...")
+
+  const loadingMessages = [
+    "Taste buds are cooking...",
+    "Finding your flavor profile...",
+    "Warming up the kitchen...",
+    "Preparing your culinary journey...",
+    "Almost ready to serve..."
+  ]
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setLoading(true)
     setError("")
+
+    // Cycle through loading messages
+    let messageIndex = 0
+    const messageInterval = setInterval(() => {
+      messageIndex = (messageIndex + 1) % loadingMessages.length
+      setLoadingMessage(loadingMessages[messageIndex])
+    }, 1500)
 
     try {
       if (mode === "login") {
@@ -41,6 +57,7 @@ export default function LoginPage() {
     } catch (err) {
       setError(err instanceof Error ? err.message : "Something went wrong")
     } finally {
+      clearInterval(messageInterval)
       setLoading(false)
     }
   }
@@ -172,7 +189,8 @@ export default function LoginPage() {
               size="lg"
               fullWidth
               loading={loading}
-              rightIcon={<ArrowRight className="w-5 h-5" />}
+              loadingText={loadingMessage}
+              rightIcon={!loading ? <ArrowRight className="w-5 h-5" /> : undefined}
               className="mt-6"
             >
               {mode === "login" ? "Log In" : "Create Account"}

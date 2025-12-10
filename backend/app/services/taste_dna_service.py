@@ -94,11 +94,12 @@ class TasteDNAService:
         {
             "id": "price_range",
             "type": "slider",
-            "question": "What's your typical dining budget?",
+            "question": "What's your typical dining budget per person?",
             "min_value": 0.0,
             "max_value": 1.0,
-            "min_label": "Fine dining",
-            "max_label": "Budget-friendly",
+            "min_label": "$50+ (Fine Dining)",
+            "max_label": "$10-15 (Casual)",
+            "labels": ["$50+ Fine Dining", "$30-50 Upscale", "$15-30 Moderate", "$10-15 Casual"]
         },
         # Choice questions
         {
@@ -171,6 +172,9 @@ class TasteDNAService:
                 image_url=q.get("image_url"),
                 min_value=q.get("min_value"),
                 max_value=q.get("max_value"),
+                labels=q.get("labels"),
+                min_label=q.get("min_label"),
+                max_label=q.get("max_label"),
             ))
         return questions
 

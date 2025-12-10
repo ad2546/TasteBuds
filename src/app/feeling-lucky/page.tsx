@@ -25,12 +25,29 @@ function FeelingLuckyPageContent() {
   const [answer, setAnswer] = useState("")
   const [qaLoading, setQaLoading] = useState(false)
 
+  // Loading messages
+  const [loadingMessage, setLoadingMessage] = useState("Finding your perfect match...")
+  const loadingMessages = [
+    "Searching for culinary gems...",
+    "Consulting your taste twins...",
+    "Analyzing restaurant vibes...",
+    "Reading reviews and ratings...",
+    "Finding the perfect spot..."
+  ]
+
   const handleAISearch = async () => {
     if (!aiQuery.trim()) return
 
     setAiLoading(true)
     setShowAISearch(false)
     setLoading(true)
+
+    // Cycle through loading messages
+    let messageIndex = 0
+    const messageInterval = setInterval(() => {
+      messageIndex = (messageIndex + 1) % loadingMessages.length
+      setLoadingMessage(loadingMessages[messageIndex])
+    }, 2000)
 
     try {
       // Use AI smart search with user's natural language query
@@ -75,6 +92,7 @@ function FeelingLuckyPageContent() {
     } catch (error) {
       console.error("AI search failed:", error)
     } finally {
+      clearInterval(messageInterval)
       setAiLoading(false)
       setLoading(false)
     }
@@ -83,6 +101,14 @@ function FeelingLuckyPageContent() {
   const loadLucky = async () => {
     setLoading(true)
     setShowAISearch(false)
+
+    // Cycle through loading messages
+    let messageIndex = 0
+    const messageInterval = setInterval(() => {
+      messageIndex = (messageIndex + 1) % loadingMessages.length
+      setLoadingMessage(loadingMessages[messageIndex])
+    }, 2000)
+
     try {
       const data = await api.getFeelingLucky(location)
       const restaurantData = (data as any).restaurant || data
@@ -102,6 +128,7 @@ function FeelingLuckyPageContent() {
     } catch (error) {
       console.error("Failed to load:", error)
     } finally {
+      clearInterval(messageInterval)
       setLoading(false)
     }
   }
@@ -255,7 +282,7 @@ function FeelingLuckyPageContent() {
           <Sparkles className="absolute inset-0 m-auto w-10 h-10 text-[#FFA94D]" />
         </div>
         <p className="mt-6 text-xl font-semibold text-gray-900">
-          {aiQuery ? "AI is finding your perfect match..." : "Finding your perfect match..."}
+          {loadingMessage}
         </p>
         <p className="text-gray-600 mt-2">
           {aiQuery ? "Understanding your preferences" : "Analyzing your taste DNA"}

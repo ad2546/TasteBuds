@@ -55,6 +55,9 @@ class QuizQuestion(BaseModel):
     image_url: Optional[str] = None
     min_value: Optional[float] = None
     max_value: Optional[float] = None
+    labels: Optional[List[str]] = None
+    min_label: Optional[str] = None
+    max_label: Optional[str] = None
 
 
 class QuizAnswer(BaseModel):

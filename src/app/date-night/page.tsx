@@ -212,10 +212,11 @@ function DateNightPageContent() {
                       Perfect for Both
                     </h3>
                     <div className="space-y-4">
-                      {suggestions.perfect_matches.map((restaurant) => (
+                      {suggestions.perfect_matches.map((restaurant, index) => (
                         <RestaurantCard
                           key={restaurant.id || restaurant.restaurant_id}
                           restaurant={restaurant}
+                          isSponsored={index === 0} // First match is sponsored
                           onClick={() => {
                             if (restaurant.url) {
                               window.open(restaurant.url, '_blank')

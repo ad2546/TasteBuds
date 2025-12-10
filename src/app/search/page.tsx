@@ -114,17 +114,22 @@ export default function SearchPage() {
         ) : results.length > 0 ? (
           <div className="space-y-4">
             <p className="text-sm text-[#6C757D]">{results.length} results found</p>
-            {results.map((restaurant) => (
-              <RestaurantCard
-                key={restaurant.id}
-                restaurant={restaurant}
-                onClick={() => {
-                  if (restaurant.url) {
-                    window.open(restaurant.url, '_blank')
-                  }
-                }}
-              />
-            ))}
+            {results.map((restaurant, index) => {
+              // Mark ~20% of restaurants as sponsored (every 5th restaurant)
+              const isSponsored = index % 5 === 0
+              return (
+                <RestaurantCard
+                  key={restaurant.id}
+                  restaurant={restaurant}
+                  isSponsored={isSponsored}
+                  onClick={() => {
+                    if (restaurant.url) {
+                      window.open(restaurant.url, '_blank')
+                    }
+                  }}
+                />
+              )
+            })}
           </div>
         ) : (
           <div className="text-center py-12">

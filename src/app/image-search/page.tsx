@@ -153,10 +153,11 @@ export default function ImageSearchPage() {
             {/* Restaurant Suggestions */}
             <h3 className="font-semibold text-[#2C3E50] mb-3">Restaurants with this dish</h3>
             <div className="space-y-4">
-              {result.restaurants.map((restaurant) => (
+              {result.restaurants.map((restaurant, index) => (
                 <RestaurantCard
                   key={restaurant.id || restaurant.restaurant_id}
                   restaurant={restaurant}
+                  isSponsored={index % 4 === 0} // Every 4th restaurant is sponsored
                   onClick={() => router.push(`/restaurant/${restaurant.id || restaurant.restaurant_id}`)}
                 />
               ))}

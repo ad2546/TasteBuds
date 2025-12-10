@@ -31,10 +31,7 @@ services:
           name: tastesync-db
           property: password
       - key: REDIS_URL
-        fromService:
-          type: redis
-          name: tastesync-redis
-          property: connectionString
+        sync: false
       - key: PINECONE_API_KEY
         sync: false
       - key: PINECONE_ENVIRONMENT
@@ -55,10 +52,3 @@ databases:
     plan: free
     databaseName: tastesync
     user: tastesync_user
-
-# Redis for caching and leaderboards
-- type: redis
-  name: tastesync-redis
-  plan: free
-  maxmemoryPolicy: allkeys-lru
-  ipAllowList: []

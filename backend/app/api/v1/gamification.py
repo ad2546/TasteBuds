@@ -230,32 +230,43 @@ async def get_leaderboard(
     db: AsyncSession = Depends(get_db),
 ):
     """Get leaderboard rankings."""
-    await redis_client.connect()
-
-    # Get leaderboard from Redis
-    leaderboard_data = await redis_client.get_leaderboard(board_type, limit)
-
-    # Get user names for each entry
+    # Try to get leaderboard from Redis, fall back to empty if Redis unavailable
     entries = []
-    for i, entry in enumerate(leaderboard_data):
-        user_result = await db.execute(
-            select(User).where(User.id == UUID(entry["user_id"]))
-        )
-        user = user_result.scalar_one_or_none()
+    user_rank = None
+    user_score = 0.0
 
-        if user:
-            entries.append(LeaderboardEntry(
-                rank=i + 1,
-                user_id=UUID(entry["user_id"]),
-                user_name=user.name,
-                avatar_url=user.avatar_url,
-                score=entry["score"],
-            ))
+    try:
+        if not redis_client.is_connected:
+            await redis_client.connect()
 
-    # Get current user's rank
-    user_rank = await redis_client.get_user_rank(str(current_user.id), board_type)
-    user_score_data = await redis_client.get(f"user:score:{current_user.id}")
-    user_score = float(user_score_data) if user_score_data else 0.0
+        # Get leaderboard from Redis
+        leaderboard_data = await redis_client.get_leaderboard(board_type, limit)
+
+        # Get user names for each entry
+        for i, entry in enumerate(leaderboard_data):
+            user_result = await db.execute(
+                select(User).where(User.id == UUID(entry["user_id"]))
+            )
+            user = user_result.scalar_one_or_none()
+
+            if user:
+                entries.append(LeaderboardEntry(
+                    rank=i + 1,
+                    user_id=UUID(entry["user_id"]),
+                    user_name=user.name,
+                    avatar_url=user.avatar_url,
+                    score=entry["score"],
+                ))
+
+        # Get current user's rank
+        user_rank = await redis_client.get_user_rank(str(current_user.id), board_type)
+        user_score_data = await redis_client.get(f"user:score:{current_user.id}")
+        user_score = float(user_score_data) if user_score_data else 0.0
+
+    except Exception as e:
+        # Redis unavailable - return empty leaderboard
+        print(f"⚠️  Redis unavailable for leaderboard: {e}")
+        pass
 
     return LeaderboardResponse(
         board_type=board_type,

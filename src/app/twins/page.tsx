@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
 import { api, type TasteTwin } from "@/lib/api"
 import { TwinAvatar } from "@/components/twin-avatar"
-import { ArrowLeft, RefreshCw, Loader2, Users, Flame, Sparkles } from "lucide-react"
+import { ArrowLeft, RefreshCw, Loader2, Users, Flame, Sparkles, MessageCircle } from "lucide-react"
 import { ProtectedRoute } from "@/components/protected-route"
 
 function TwinsPageContent() {
@@ -12,6 +12,7 @@ function TwinsPageContent() {
   const [twins, setTwins] = useState<TasteTwin[]>([])
   const [loading, setLoading] = useState(true)
   const [refreshing, setRefreshing] = useState(false)
+  const [showComingSoon, setShowComingSoon] = useState(false)
 
   useEffect(() => {
     loadTwins()
@@ -53,6 +54,12 @@ function TwinsPageContent() {
     }
   }
 
+  const handleMessageClick = (e: React.MouseEvent) => {
+    e.stopPropagation()
+    setShowComingSoon(true)
+    setTimeout(() => setShowComingSoon(false), 2000)
+  }
+
   if (loading) {
     return (
       <div className="min-h-screen bg-[#F8F9FA] flex items-center justify-center">
@@ -63,6 +70,16 @@ function TwinsPageContent() {
 
   return (
     <div className="min-h-screen bg-[#F8F9FA] pb-[60px] md:pb-0">
+      {/* Coming Soon Toast */}
+      {showComingSoon && (
+        <div className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 animate-in fade-in slide-in-from-top">
+          <div className="bg-white rounded-xl shadow-lg px-6 py-3 flex items-center gap-2">
+            <MessageCircle className="w-5 h-5 text-[#FF6B6B]" />
+            <span className="font-medium text-[#2C3E50]">Coming Soon!</span>
+          </div>
+        </div>
+      )}
+
       {/* Header */}
       <div className="bg-[#FF6B6B] px-4 pt-4 pb-12">
         <div className="max-w-md mx-auto">
@@ -96,18 +113,36 @@ function TwinsPageContent() {
             {twins.map((twin) => (
               <div
                 key={twin.twin_id}
-                onClick={() => router.push(`/date-night?partner=${twin.twin_id}`)}
-                className="bg-white rounded-2xl shadow-lg p-4 cursor-pointer hover:shadow-xl transition-shadow"
+                className="bg-white rounded-2xl shadow-lg p-4 hover:shadow-xl transition-shadow"
               >
                 <div className="flex items-start gap-4">
-                  <TwinAvatar twin={twin} size="lg" />
+                  <div
+                    onClick={() => router.push(`/date-night?partner=${twin.twin_id}`)}
+                    className="cursor-pointer"
+                  >
+                    <TwinAvatar twin={twin} size="lg" />
+                  </div>
 
                   <div className="flex-1">
                     <div className="flex items-center justify-between mb-1">
-                      <h3 className="font-semibold text-[#2C3E50]">{twin.name}</h3>
-                      <span className="text-sm font-bold text-[#FF6B6B]">
-                        {Math.round(twin.similarity_score * 100)}% Match
-                      </span>
+                      <h3
+                        onClick={() => router.push(`/date-night?partner=${twin.twin_id}`)}
+                        className="font-semibold text-[#2C3E50] cursor-pointer hover:text-[#FF6B6B] transition-colors"
+                      >
+                        {twin.name}
+                      </h3>
+                      <div className="flex items-center gap-2">
+                        <button
+                          onClick={handleMessageClick}
+                          className="w-8 h-8 rounded-full bg-[#FF6B6B]/10 flex items-center justify-center hover:bg-[#FF6B6B]/20 transition-colors"
+                          title="Message (Coming Soon)"
+                        >
+                          <MessageCircle className="w-4 h-4 text-[#FF6B6B]" />
+                        </button>
+                        <span className="text-sm font-bold text-[#FF6B6B]">
+                          {Math.round(twin.similarity_score * 100)}% Match
+                        </span>
+                      </div>
                     </div>
 
                     {/* Shared Cuisines */}
